@@ -19,17 +19,19 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
+  username: web_log
+  password:
   pool: 5
 
 development:
   <<: *default
-  database: kont-noor_development
+  database: web_log_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: kont-noor
+  #username: web_log
 
   # The password associated with the postgres role (username).
   #password:
@@ -57,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: kont-noor_test
+  database: web_log_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: kont-noor_production
-  username: kont-noor
-  password: <%= ENV['KONT-NOOR_DATABASE_PASSWORD'] %>
+  database: web_log_production
+  username: web_log
+  password: <%= ENV['WEB_LOG_DATABASE_PASSWORD'] %>
