@@ -1,5 +1,5 @@
 - if user_signed_in?
   = link_to "Edit", edit_page_path(@page)
 %h1= @page.title
-%em= @page.description
+%small= @page.description
 %p= @page.body

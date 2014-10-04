@@ -6,6 +6,20 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %p.notice= notice
-    %p.alert= alert
-    = yield
+    #main
+      #center
+        .content
+          - if signed_in?
+            = link_to "Sign Out", destroy_user_session_path, method: :delete
+          %p.notice= notice
+          %p.alert= alert
+          = yield
+        .sidebar
+          - if signed_in?
+            = link_to "Create new page", new_page_path
+          - if menu.present?
+            %ul
+              - menu.each do |page|
+                %li= link_to page.title, menu_item_path(page.slug)
+      #header
+        %strong.title WebLog

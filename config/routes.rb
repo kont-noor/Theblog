@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :pages
-  get '/:slug' => 'pages#show'
+  get '/:slug' => 'pages#show', :as => :menu_item
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
