@@ -1,1 +1,3 @@
-== WebLog - a default web log for most purposes
+= Yablog - yet another default web log for most purposes
+
+This project rocks and uses MIT-LICENSE.
