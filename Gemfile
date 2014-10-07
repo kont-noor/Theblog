@@ -15,4 +15,5 @@ gemspec
 
 gem 'rspec-rails'
 gem 'factory_girl_rails'
-gem 'devise', git: 'git://github.com/plataformatec/devise.git'
+gem 'shoulda'
+gem 'simplecov'
