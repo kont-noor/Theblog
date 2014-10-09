@@ -2,6 +2,7 @@ require 'rails_helper'
 
 module Yablog
   RSpec.describe HomeController, :type => :controller do
+    routes { Yablog::Engine.routes }
 
     describe "GET index" do
       let(:user){ FactoryGirl.create(:confirmed_user) }

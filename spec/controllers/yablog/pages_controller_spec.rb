@@ -2,6 +2,8 @@ require 'rails_helper'
 
 module Yablog
   RSpec.describe PagesController, :type => :controller do
+    routes { Yablog::Engine.routes }
+
     describe "GET show" do
       it "should find page by slug" do
         expect(Page).to receive(:find).with("1"){ double(:page) }
