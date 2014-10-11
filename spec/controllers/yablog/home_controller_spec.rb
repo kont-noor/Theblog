@@ -22,7 +22,7 @@ module Yablog
         Page.create(title: "Home", slug: 'home', body: "text")
         get :index
 
-        expect(response).to render_template("pages/show")
+        expect(response).to render_template("yablog/pages/show")
       end
     end
 
