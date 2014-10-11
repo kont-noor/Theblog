@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.1.6"
   s.add_dependency "devise"
   s.add_dependency "haml"
+  s.add_dependency "simple_form"
 
   s.add_development_dependency "pg"
 end
