@@ -10,7 +10,7 @@ module Yablog
     def create
       @page = Page.new(page_params)
       if @page.save
-        redirect_to page_path(@page)
+        redirect_to page_path(@page), notice: "Page has been created"
       else
         render :new
       end
@@ -18,7 +18,7 @@ module Yablog
 
     def update
       if @page.update(page_params)
-        redirect_to page_path(@page)
+        redirect_to page_path(@page), notice: "Page has been updated"
       else
         render :edit
       end
