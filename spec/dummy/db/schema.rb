@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141006305000) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "yablog_pages", force: true do |t|
     t.string   "title",       null: false
     t.string   "slug",        null: false
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 20141006305000) do
     t.datetime "updated_at"
   end
 
-  add_index "yablog_pages", ["slug"], name: "index_yablog_pages_on_slug", unique: true, using: :btree
+  add_index "yablog_pages", ["slug"], name: "index_yablog_pages_on_slug", unique: true
 
   create_table "yablog_users", force: true do |t|
     t.string   "user_name",                          null: false
@@ -49,9 +46,9 @@ ActiveRecord::Schema.define(version: 20141006305000) do
     t.datetime "updated_at"
   end
 
-  add_index "yablog_users", ["confirmation_token"], name: "index_yablog_users_on_confirmation_token", unique: true, using: :btree
-  add_index "yablog_users", ["email"], name: "index_yablog_users_on_email", unique: true, using: :btree
-  add_index "yablog_users", ["reset_password_token"], name: "index_yablog_users_on_reset_password_token", unique: true, using: :btree
-  add_index "yablog_users", ["user_name"], name: "index_yablog_users_on_user_name", unique: true, using: :btree
+  add_index "yablog_users", ["confirmation_token"], name: "index_yablog_users_on_confirmation_token", unique: true
+  add_index "yablog_users", ["email"], name: "index_yablog_users_on_email", unique: true
+  add_index "yablog_users", ["reset_password_token"], name: "index_yablog_users_on_reset_password_token", unique: true
+  add_index "yablog_users", ["user_name"], name: "index_yablog_users_on_user_name", unique: true
 
 end
