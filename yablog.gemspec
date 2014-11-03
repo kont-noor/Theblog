@@ -21,6 +21,13 @@ Gem::Specification.new do |s|
   s.add_dependency "devise", "~> 3.4"
   s.add_dependency "haml", "~> 4.0"
   s.add_dependency "simple_form", "~> 3.0"
+  s.add_dependency "bootstrap-sass", "~> 3.2.0"
+  s.add_dependency "sass-rails", "~> 4.0.2"
+  s.add_dependency "jquery-rails", "~> 3.1.2"
+  s.add_dependency "ckeditor"
+  s.add_dependency "carrierwave"
+  s.add_dependency "mini_magick"
+  s.add_dependency "uglifier"
 
   s.add_development_dependency "pg", "~> 0.17"
 end

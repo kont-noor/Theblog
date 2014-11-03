@@ -1,0 +1,20 @@
+.navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'Project name', yablog.root_path, class: 'navbar-brand'
+    .navbar-collapse.collapse
+
+      %ul.nav.navbar-nav.navbar-right
+        - if signed_in?
+          %li
+            = link_to "Create new page", yablog.new_page_path
+          %li
+            = link_to 'Sign out', destroy_user_session_path, method: :delete
+        - else
+          %li
+            = link_to 'Sign in', yablog.new_user_session_path
