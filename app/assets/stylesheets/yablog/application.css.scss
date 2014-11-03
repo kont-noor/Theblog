@@ -1,0 +1,12 @@
+/*
+ * application.css.scss
+ *= require_tree .
+ *= require_self
+*/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#application-container{
+  margin-top: 100px;
+}

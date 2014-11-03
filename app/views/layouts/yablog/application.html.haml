@@ -2,24 +2,31 @@
 %html
   %head
     %title WebLog
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'yablog/application', media: 'all'
+    = javascript_include_tag 'yablog/application'
     = csrf_meta_tags
   %body
-    #main
-      #center
-        .content
-          - if signed_in?
-            = link_to "Sign Out", destroy_user_session_path, method: :delete
-          %p.notice= notice
-          %p.alert= alert
-          = yield
-        .sidebar
-          - if signed_in?
-            = link_to "Create new page", new_page_path
-          - if menu.present?
-            %ul
-              - menu.each do |page|
-                %li= link_to page.title, menu_item_path(page.slug)
-      #header
-        %strong.title WebLog
+    = render 'layouts/yablog/header'
+    #application-container.container
+      .page-container
+
+        .row.row-offcanvas.row-offcanvas-left
+
+          #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas{:role => "navigation"}
+            .affix-top{"data-offset-bottom" => "90", "data-offset-top" => "45", "data-spy" => "affix"}
+            .panel.panel-default
+              .panel-heading
+                %h3.panel-title
+              .panel-body
+                %ul#sidebar-nav.nav
+                  %li
+                    = link_to 'Home', yablog.root_path
+                  - if menu.present?
+                    - menu.each do |page|
+                      %li
+                        = link_to page.title, yablog.menu_item_path(page.slug)
+
+          #main.col-xs-12.col-sm-9{"data-spy" => "scroll", "data-target" => "#sidebar-nav"}
+            %p.notice= notice
+            %p.alert= alert
+            = yield
