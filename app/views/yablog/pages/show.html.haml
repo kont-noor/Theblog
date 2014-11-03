@@ -1,3 +1,4 @@
 %h1= @page.title
 %small= @page.description
-%p= @page.body
+.article_body
+  = @page.body.html_safe

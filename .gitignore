@@ -7,5 +7,9 @@ spec/dummy/log/*.log
 spec/dummy/tmp/
 spec/dummy/.sass-cache
 spec/dummy/config/database.yml
+spec/dummy/public/uploads/ckeditor/pictures/*
+spec/dummy/public/assets/*
 
 coverage
+
+spec/dummy/db/schema.rb

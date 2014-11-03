@@ -1,6 +1,14 @@
 = simple_form_for @page do |f|
-  = f.input :title, label_html: { class: 'col-md-2' }, input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' }
-  = f.input :slug, label_html: { class: 'col-md-2' }, input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' }
-  = f.input :description, label_html: { class: 'col-md-2' }, input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' }
-  = f.input :body, label_html: { class: 'col-md-2' }, input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' }
+  = f.input :title, label_html: { class: 'col-md-2' }, label: 'Title',
+    input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' }
+  = f.input :slug, label_html: { class: 'col-md-2' },
+    input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' }
+  = f.input :description, label_html: { class: 'col-md-2' },
+    input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' }
+  .row.form-group
+    .col-md-2
+      = f.label :body
+    .col-md-10
+      = f.input :body, as: :ckeditor, label_html: { class: 'col-md-2' }, label: false,
+        input_html: { class: 'form-control', toolbar: 'Full' }, wrapper_html: { class: 'form-group' }
   = f.submit 'Save', class: 'btn btn-default'

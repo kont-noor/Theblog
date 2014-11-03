@@ -22,3 +22,8 @@ For now user registration is not implemented so create the confirmed user in the
                       confirmed_at: Time.now
 
 Follow `/blog/pages/new` to create your first page
+
+
+If you want work uploading images in reach editor, add
+`mount Ckeditor::Engine => '/ckeditor'`
+to your routes.rb
