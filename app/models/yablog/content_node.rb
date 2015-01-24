@@ -5,5 +5,6 @@ module Yablog
     belongs_to :author, class_name: 'Yablog::User'
 
     validates_presence_of :title, :slug
+    validates_uniqueness_of :slug, scope: :type
   end
 end

@@ -44,17 +44,6 @@ ActiveRecord::Schema.define(version: 20150124104006) do
 
   add_index "yablog_content_statuses", ["title"], name: "index_yablog_content_statuses_on_title", unique: true, using: :btree
 
-  create_table "yablog_pages", force: true do |t|
-    t.string   "title",       null: false
-    t.string   "slug",        null: false
-    t.text     "description"
-    t.text     "body",        null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "yablog_pages", ["slug"], name: "index_yablog_pages_on_slug", unique: true, using: :btree
-
   create_table "yablog_users", force: true do |t|
     t.string   "user_name",                          null: false
     t.string   "first_name"
