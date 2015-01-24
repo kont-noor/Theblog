@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150124095542) do
+ActiveRecord::Schema.define(version: 20150124104006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "yablog_content_nodes", force: true do |t|
+    t.string   "type",              null: false
+    t.string   "title",             null: false
+    t.string   "slug",              null: false
+    t.text     "description"
+    t.text     "body"
+    t.string   "tags"
+    t.integer  "content_status_id"
+    t.integer  "parent_node_id"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "yablog_content_nodes", ["slug"], name: "index_yablog_content_nodes_on_slug", using: :btree
+  add_index "yablog_content_nodes", ["title"], name: "index_yablog_content_nodes_on_title", using: :btree
+  add_index "yablog_content_nodes", ["type", "slug"], name: "index_yablog_content_nodes_on_type_and_slug", unique: true, using: :btree
+  add_index "yablog_content_nodes", ["type"], name: "index_yablog_content_nodes_on_type", using: :btree
 
   create_table "yablog_content_statuses", force: true do |t|
     t.string   "title",       null: false
@@ -62,5 +81,9 @@ ActiveRecord::Schema.define(version: 20150124095542) do
   add_index "yablog_users", ["email"], name: "index_yablog_users_on_email", unique: true, using: :btree
   add_index "yablog_users", ["reset_password_token"], name: "index_yablog_users_on_reset_password_token", unique: true, using: :btree
   add_index "yablog_users", ["user_name"], name: "index_yablog_users_on_user_name", unique: true, using: :btree
+
+  add_foreign_key "yablog_content_nodes", "yablog_content_nodes", name: "yablog_content_nodes_parent_node_id_fk", column: "parent_node_id"
+  add_foreign_key "yablog_content_nodes", "yablog_content_statuses", name: "yablog_content_nodes_content_status_id_fk", column: "content_status_id"
+  add_foreign_key "yablog_content_nodes", "yablog_users", name: "yablog_content_nodes_author_id_fk", column: "author_id"
 
 end
