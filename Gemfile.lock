@@ -2,10 +2,10 @@ PATH
   remote: .
   specs:
     yablog (0.0.1)
-      devise
-      haml
-      rails (~> 4.1.6)
-      simple_form
+      devise (~> 3.4)
+      haml (~> 4.0)
+      rails (~> 4.1)
+      simple_form (~> 3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -61,12 +61,14 @@ GEM
     factory_girl_rails (4.4.1)
       factory_girl (~> 4.4.0)
       railties (>= 3.0.0)
+    foreigner (1.7.2)
+      activerecord (>= 3.0.0)
     haml (4.0.5)
       tilt
     hike (1.2.3)
     i18n (0.6.11)
     json (1.8.1)
-    mail (2.6.1)
+    mail (2.6.3)
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.4.1)
@@ -160,7 +162,8 @@ PLATFORMS
 DEPENDENCIES
   capybara
   factory_girl_rails
-  pg
+  foreigner
+  pg (~> 0.17)
   pry-rails
   rspec-rails
   shoulda

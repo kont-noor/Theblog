@@ -12,6 +12,7 @@ gemspec
 gem 'rspec-rails'
 gem 'factory_girl_rails'
 gem 'pry-rails'
+gem 'foreigner'
 group :test do
   gem 'shoulda'
   gem 'simplecov'

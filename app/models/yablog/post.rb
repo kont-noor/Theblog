@@ -1,5 +1,5 @@
 module Yablog
-  class Page < ContentNode
+  class Post < ContentNode
     validates_presence_of :body
   end
 end
