@@ -1,0 +1,12 @@
+%table
+  %tr
+    - model.new.attributes.keys.each do |field|
+      %th= field
+    %th
+  - items.each do |item|
+    %tr
+      - item.attributes.values.each do |value|
+        %td= value
+      %td= link_to_item(item)
+
+= link_to_new_item(model)
