@@ -1,4 +1,4 @@
 = simple_form_for [:admin, @item] do |f|
-  - @item.attributes.keys.each do |field|
+  - model_params.each do |field|
     = f.input field
   = f.submit
