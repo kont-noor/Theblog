@@ -3,9 +3,9 @@ module Yablog
     skip_before_action :authenticate_user!
 
     def index
-      @page = Page.find_by_slug('home')
-      @page ||= Page.first
-      render 'yablog/pages/show' if @page
+      @node = Page.find_by(slug: 'home')
+      @node ||= Page.first
+      render 'yablog/content_nodes/show' if @node
     end
   end
 end
