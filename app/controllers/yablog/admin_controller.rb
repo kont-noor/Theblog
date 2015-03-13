@@ -8,7 +8,8 @@ module Yablog
 
     def create
       if @item = model.create(permitted_params)
-        redirect_to action: :index, notice: "success"
+        flash[:notice] = "Item created"
+        redirect_to action: :index
       else
         render 'new'
       end
