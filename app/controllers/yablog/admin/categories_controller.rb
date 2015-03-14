@@ -1,5 +1,5 @@
 module Yablog
-  class Admin::CategoriesController < AdminController
+  class Admin::CategoriesController < Admin::ItemsController
     MODEL = Yablog::Category
     ATTRIBUTES = [:title, :slug, :description, :tags]
     INDEX = [:title, :description]

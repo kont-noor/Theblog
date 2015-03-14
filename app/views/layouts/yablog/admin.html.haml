@@ -8,15 +8,14 @@
   %body
     #main
       #header
-        %strong.title WebLog
+        %strong.title WebLog Admin
       #center
         .sidebar
           - if signed_in?
             = link_to "Create new page", new_page_path
-          - if menu.present?
-            %ul
-              - menu.each do |page|
-                %li= link_to_content_node page
+          %ul
+            - [:pages, :posts, :categories, :content_statuses].each do |item|
+              %li= link_to item.to_s.humanize, send("admin_#{item}_path")
         .content
           - if signed_in?
             = link_to "Sign Out", destroy_user_session_path, method: :delete
