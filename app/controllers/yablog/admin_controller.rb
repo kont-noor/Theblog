@@ -2,6 +2,7 @@ module Yablog
   class AdminController < ApplicationController
     # TODO: temporary commented authentication
     #before_action :authenticate_user!
+
     def new
       @item = model.new
     end
@@ -44,8 +45,19 @@ module Yablog
     end
     helper_method :model_params
 
+    private def model_associations
+      self.class::ASSOCIATIONS
+    rescue
+      []
+    end
+    helper_method :model_associations
+
+    private def model_association_param_keys
+      model_associations.map{ |association| "#{association}_id" }
+    end
+
     private def permitted_params
-      params.require(model_params_key).permit(*model_params)
+      params.require(model_params_key).permit(*model_params, *model_association_param_keys)
     end
 
     private def model_params_key

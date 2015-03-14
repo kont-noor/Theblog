@@ -1,4 +1,6 @@
 = simple_form_for [:admin, item] do |f|
   - model_params.each do |field|
     = f.input field
+  - model_associations.each do |association|
+    = f.association association
   = f.submit
