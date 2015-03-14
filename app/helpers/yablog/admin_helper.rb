@@ -25,7 +25,7 @@ module Yablog
     end
 
     def model_class(model)
-      model.to_s.downcase.match(/\w+$/)
+      model.to_s.underscore.match(/[\w_]+$/)
     end
   end
 end

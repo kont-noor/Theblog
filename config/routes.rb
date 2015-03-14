@@ -4,6 +4,7 @@ Yablog::Engine.routes.draw do
     resources :posts
     resources :categories
     resources :content_statuses
+    root 'dashboard#index'
   end
 
   devise_for :users, class_name: "Yablog::User", module: :devise

@@ -49,7 +49,7 @@ module Yablog
     end
 
     private def model_params_key
-      model.to_s.match(/[\w_]+$/).to_s.downcase
+      model.to_s.underscore.match(/[\w_]+$/).to_s
     end
 
     private def index_fields
