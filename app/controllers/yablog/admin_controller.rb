@@ -15,6 +15,15 @@ module Yablog
       end
     end
 
+    def update
+      if item.update(permitted_params)
+        flash[:notice] = "Item updated"
+        redirect_to action: :show
+      else
+        render 'new'
+      end
+    end
+
     private def item
       @item ||= model.find(params[:id])
     end
@@ -42,5 +51,10 @@ module Yablog
     private def model_params_key
       model.to_s.match(/[\w_]+$/).to_s.downcase
     end
+
+    private def index_fields
+      self.class::INDEX
+    end
+    helper_method :index_fields
   end
 end
