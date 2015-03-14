@@ -53,7 +53,9 @@ module Yablog
     helper_method :model_associations
 
     private def model_association_param_keys
-      model_associations.map{ |association| "#{association}_id" }
+      model_associations.map do |association|
+        model.reflections[association].foreign_key
+      end
     end
 
     private def permitted_params
