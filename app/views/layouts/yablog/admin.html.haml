@@ -12,13 +12,13 @@
       #center
         .sidebar
           - if signed_in?
-            = link_to "Create new page", new_page_path
+            Signed as
+            = current_user.user_name
+            = button_to "Sign Out", destroy_user_session_path, method: :delete
           %ul
             - [:pages, :posts, :categories, :content_statuses].each do |item|
               %li= link_to item.to_s.humanize, send("admin_#{item}_path")
         .content
-          - if signed_in?
-            = link_to "Sign Out", destroy_user_session_path, method: :delete
           %p.notice= notice
           %p.alert= alert
           = yield
