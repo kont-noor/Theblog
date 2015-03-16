@@ -4,15 +4,11 @@
 
 To install the blog engine add the following line to `Gemfile`
 
-  gem 'yablog'
+  gem 'yablog', git: 'https://github.com/kont-noor/WebLog'
 
 Then mount your application at `config/routes.rb`
 
   mount Yablog::Engine, at: "/blog"
-
-Copy migrations to your application
-
-  be rake yablog:install:migrations
 
 And run `rake db:migrate`
 
@@ -21,4 +17,4 @@ For now user registration is not implemented so create the confirmed user in the
   Yablog::User.create email: 'fake@mail.com', user_name: 'username', password: 'password',
                       confirmed_at: Time.now
 
-Follow `/blog/pages/new` to create your first page
+Follow `/blog/admin` to access the admin dashboard

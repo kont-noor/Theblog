@@ -1,0 +1,7 @@
+Show
+%ul
+  - index_fields.each do |key|
+    %li
+      = key
+      \= 
+      = item.send(key)

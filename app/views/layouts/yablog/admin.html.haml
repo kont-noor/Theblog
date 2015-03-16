@@ -8,18 +8,16 @@
   %body
     #main
       #header
-        %strong.title WebLog
+        %strong.title WebLog Admin
       #center
         .sidebar
           - if signed_in?
-            = link_to "Admin", admin_root_path
             Signed as
             = current_user.user_name
             = button_to "Sign Out", destroy_user_session_path, method: :delete
-          - if menu.present?
-            %ul
-              - menu.each do |page|
-                %li= link_to_content_node page
+          %ul
+            - [:pages, :posts, :categories, :content_statuses].each do |item|
+              %li= link_to item.to_s.humanize, send("admin_#{item}_path")
         .content
           %p.notice= notice
           %p.alert= alert
