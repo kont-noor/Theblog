@@ -3,14 +3,15 @@
     .row
       .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
         .site-heading
-          %h1 WebLog
+          %h1= @node.try(:title) || 'WebLog'
           %hr.small/
-          %span.subheading Yet another default web log for most purposes
+          %span.subheading= @node.try(:description) || 'Yet another default web log for most purposes'
 / Main Content
 .container
   .row
     .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
-      %p= @node.body
+      -if @node.present?
+        %p= @node.body
 
       - @posts.each do |post|
         .post-preview
