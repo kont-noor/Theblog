@@ -5,7 +5,8 @@ module Yablog
     def index
       @node = Page.find_by(slug: 'home')
       @node ||= Page.first
-      render 'yablog/content_nodes/show' if @node
+
+      @posts = Post.all
     end
   end
 end

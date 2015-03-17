@@ -1,9 +1,26 @@
-%h1= @node.title
-%small= @node.description
-%p= @node.body
+/ Page Header
+/ Set your background image for this header on the line below.
+-#%header.intro-header{:style => "background-image: url('img/post-bg.jpg')"}
+%header.intro-header{:style => "background:#333"}
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        .post-heading
+          %h1= @node.title
+          %h2.subheading= @node.description
+          %span.meta
+            Posted by
+            %a{:href => "#"} Admin
+            on August 24, 2014
+/ Post Content
+%article
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        %p= @node.body
 
-- if @node.is_a? Yablog::Category
-  %h2 Posts:
-  %ul
-    - @node.child_nodes.each do |child|
-      %li= link_to_content_node(child)
+        - if @node.is_a? Yablog::Category
+          %h2.section-heading Posts:
+          %ul
+            - @node.child_nodes.each do |child|
+              %li= link_to_content_node(child)

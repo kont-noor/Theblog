@@ -7,7 +7,11 @@ module Yablog
                 yablog.root_content_node_path(node.slug)
              end
 
-      link_to node.title, link
+      if block_given?
+        link_to(link) { yield }
+      else
+        link_to node.title, link
+      end
     end
   end
 end

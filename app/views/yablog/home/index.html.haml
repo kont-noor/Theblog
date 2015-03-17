@@ -1,2 +1,29 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+%header.intro-header{:style => "background:#333"}
+  .container
+    .row
+      .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+        .site-heading
+          %h1 WebLog
+          %hr.small/
+          %span.subheading Yet another default web log for most purposes
+/ Main Content
+.container
+  .row
+    .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
+      %p= @node.body
+
+      - @posts.each do |post|
+        .post-preview
+          = link_to_content_node(post) do
+            %h2.post-title= post.title
+            %h3.post-subtitle= post.description
+
+          %p.post-meta
+            Posted by
+            %a{:href => "#"} Admin
+            on September 24, 2014
+      %hr/
+      / Pager
+      %ul.pager
+        %li.next
+          %a{:href => "#"} Older Posts →
