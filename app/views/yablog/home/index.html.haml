@@ -20,8 +20,9 @@
 
           %p.post-meta
             Posted by
-            %a{:href => "#"} Admin
-            on September 24, 2014
+            = post.author.try(:user_name) || "anonymous"
+            on
+            = post.created_at.strftime('%d.%m.%Y')
       %hr/
       / Pager
       %ul.pager

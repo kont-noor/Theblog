@@ -5,7 +5,7 @@ module Yablog
     end
 
     def create
-      if @item = model.create(permitted_params)
+      if @item = model.create(permitted_params.merge({author: current_user}))
         flash[:notice] = "Item created"
         redirect_to action: :index
       else

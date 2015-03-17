@@ -8,10 +8,12 @@
         .post-heading
           %h1= @node.title
           %h2.subheading= @node.description
-          %span.meta
-            Posted by
-            %a{:href => "#"} Admin
-            on August 24, 2014
+          - if @node.type == 'Yablog::Post'
+            %span.meta
+              Posted by
+              = @node.author.try(:user_name) || "anonymous"
+              on
+              = @node.created_at.strftime('%d.%m.%Y')
 / Post Content
 %article
   .container
