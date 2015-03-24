@@ -17,13 +17,6 @@ module Yablog
         expect(response).to have_http_status(:success)
         expect(response).to render_template(:index)
       end
-
-      it "renders page template if any page exists" do
-        Page.create(title: "Home", slug: 'home', body: "text")
-        get :index
-
-        expect(response).to render_template("yablog/content_nodes/show")
-      end
     end
 
   end

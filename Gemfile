@@ -18,3 +18,6 @@ group :test do
   gem 'simplecov'
   gem 'capybara'
 end
+gem 'bootstrap-sass'
+gem 'sass-rails'
+gem 'jquery-rails'
