@@ -1,4 +1,4 @@
-%table
+%table.table.table-striped
   %tr
     - index_fields.each do |field|
       %th= field
@@ -11,4 +11,4 @@
         = link_to_item(item)
         = link_to_edit_item(item)
 
-= link_to_new_item(model)
+= link_to_new_item(model, class: 'btn btn-primary')

@@ -14,5 +14,11 @@ module Yablog
         end
       end
     end
+
+    config.to_prepare do
+      Rails.application.config.assets.precompile += %w(
+        yablog/*
+      )
+    end
   end
 end
