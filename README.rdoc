@@ -1,5 +1,7 @@
 = Yablog - yet another default web log for most purposes
 
+{<img src="https://travis-ci.org/kont-noor/WebLog.svg" alt="Build Status" />}[https://travis-ci.org/kont-noor/WebLog]
+
 == Usage
 
 To install the blog engine add the following line to `Gemfile`
