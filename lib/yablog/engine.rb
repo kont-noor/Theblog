@@ -1,3 +1,8 @@
+require 'rails-assets-font-awesome'
+require 'rails-assets-metisMenu'
+require 'rails-assets-morrisjs'
+require 'rails-assets-bootstrap-social'
+
 module Yablog
   class Engine < ::Rails::Engine
     isolate_namespace Yablog

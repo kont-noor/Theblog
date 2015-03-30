@@ -19,11 +19,6 @@ gem 'bootstrap-sass'
 gem 'sass-rails'
 gem 'jquery-rails'
 
-gem 'rails-assets-font-awesome'
-gem 'rails-assets-metisMenu'
-gem 'rails-assets-morrisjs'
-gem 'rails-assets-bootstrap-social'
-
 group :test do
   gem 'shoulda'
   gem 'simplecov'

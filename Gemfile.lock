@@ -210,10 +210,6 @@ DEPENDENCIES
   pg (~> 0.17)
   pry-rails
   quiet_assets
-  rails-assets-bootstrap-social
-  rails-assets-font-awesome
-  rails-assets-metisMenu
-  rails-assets-morrisjs
   rspec-rails
   sass-rails
   shoulda
