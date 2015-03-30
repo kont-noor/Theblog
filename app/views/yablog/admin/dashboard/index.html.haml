@@ -1,5 +1,7 @@
-%h1 Admin Dashboard
+.row
+  .col-lg-12
+    %h1.page-header Admin Dashboard
 
-%ul
+%ul.list-unstyled
   - [:pages, :posts, :categories, :content_statuses].each do |item|
     %li= link_to item.to_s.humanize, send("admin_#{item}_path")

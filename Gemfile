@@ -1,4 +1,5 @@
 source "https://rubygems.org"
+source 'https://rails-assets.org'
 
 # Declare your gem's dependencies in yablog.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -13,11 +14,22 @@ gem 'rspec-rails'
 gem 'factory_girl_rails'
 gem 'pry-rails'
 gem 'foreigner'
+
+gem 'bootstrap-sass'
+gem 'sass-rails'
+gem 'jquery-rails'
+
+gem 'rails-assets-font-awesome'
+gem 'rails-assets-metisMenu'
+gem 'rails-assets-morrisjs'
+gem 'rails-assets-bootstrap-social'
+
 group :test do
   gem 'shoulda'
   gem 'simplecov'
   gem 'capybara'
 end
-gem 'bootstrap-sass'
-gem 'sass-rails'
-gem 'jquery-rails'
+
+group :development do
+  gem 'quiet_assets'
+end

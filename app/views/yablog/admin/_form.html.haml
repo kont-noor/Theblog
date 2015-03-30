@@ -1,6 +1,13 @@
 = simple_form_for [:admin, item] do |f|
+
   - model_params.each do |field|
-    = f.input field
+    = f.input field,
+      wrapper_html: { class: 'form-group' },
+      input_html:   { class: 'form-control' }
+
   - model_associations.each do |association|
-    = f.association association
-  = f.submit
+    = f.association association,
+      wrapper_html: { class: 'form-group' },
+      input_html:   { class: 'form-control' }
+
+  = f.button :submit, class: 'btn btn-success'

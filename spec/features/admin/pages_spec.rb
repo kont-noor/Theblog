@@ -15,7 +15,7 @@ describe 'admin pages' do
     expect(page).to have_content('Signed in successfully')
     expect(page).to have_content('Admin Dashboard')
 
-    within('.content') do
+    within('.sidebar') do
       click_on "Pages"
     end
     click_on "New Item"

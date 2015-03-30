@@ -2,23 +2,41 @@
 %html
   %head
     %title WebLog
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'yablog/admin', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'yablog/admin', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    #main
-      #header
-        %strong.title WebLog Admin
-      #center
-        .sidebar
-          - if signed_in?
-            Signed as
-            = current_user.user_name
-            = button_to "Sign Out", destroy_user_session_path, method: :delete
-          %ul
-            - [:pages, :posts, :categories, :content_statuses].each do |item|
-              %li= link_to item.to_s.humanize, send("admin_#{item}_path")
-        .content
-          %p.notice= notice
-          %p.alert= alert
-          = yield
+    #wrapper
+      / Navigation
+      %nav.navbar.navbar-default.navbar-static-top{:role => "navigation", :style => "margin-bottom: 0"}
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to "Admin", yablog.admin_root_path, class: 'navbar-brand'
+        %ul.nav.navbar-top-links.navbar-right
+          = render "yablog/admin/shared/navbar"
+
+        .navbar-default.sidebar{:role => "navigation"}
+          = render "yablog/admin/shared/sidebar"
+
+      #page-wrapper
+        .container
+          %section.warning
+            - if flash[:notice]
+              .alert.alert-success.alert-dismissible{role: 'alert'}
+                %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+                  %span{"aria-hidden" => "true"} &times;
+                %p= flash[:notice].html_safe
+            - if flash[:alert]
+              .alert.alert-danger.alert-dismissible{role: 'alert'}
+                %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+                  %span{"aria-hidden" => "true"} &times;
+                %p= flash[:alert]
+        .row
+          .col-lg-12
+            = yield
+
+      .footer

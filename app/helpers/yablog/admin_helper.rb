@@ -8,8 +8,8 @@ module Yablog
       link_to "Edit", path_to_edit_item(item)
     end
 
-    def link_to_new_item(model)
-      link_to "New Item", path_to_new_item(model)
+    def link_to_new_item(model, params = nil)
+      link_to "New Item", path_to_new_item(model), params
     end
 
     def path_to_item(item)
