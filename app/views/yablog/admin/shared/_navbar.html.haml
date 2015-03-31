@@ -13,9 +13,9 @@
         Settings
     %li.divider
     %li
-      %a{:href => "login.html"}
+      = link_to destroy_user_session_path, method: :delete do
         %i.fa.fa-sign-out.fa-fw
-        Logout
+        Sign Out
   / /.dropdown-user
 / /.dropdown
 / /.navbar-top-links
