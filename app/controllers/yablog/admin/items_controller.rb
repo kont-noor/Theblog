@@ -56,7 +56,7 @@ module Yablog
     end
 
     private def permitted_params
-      params.require(model_params_key).permit(*model_params, *model_association_param_keys)
+      params.require(model_params_key).permit(*model_params.map{ |attr| attr.is_a?(Hash) ? attr.keys.first : attr }, *model_association_param_keys)
     end
 
     private def model_params_key
