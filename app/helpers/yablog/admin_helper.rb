@@ -27,5 +27,19 @@ module Yablog
     def model_class(model)
       model.to_s.underscore.match(/[\w_]+$/)
     end
+
+    def bootstrap_input(form, field)
+      parameters = {
+        wrapper_html: { class: 'form-group' },
+        input_html:   { class: 'form-control' }
+      }
+      field_name = if field.is_a? Hash
+                     parameters[:as] = field.values.first
+                     field.keys.first
+                   else
+                     field
+                   end
+      form.input field_name, parameters
+    end
   end
 end

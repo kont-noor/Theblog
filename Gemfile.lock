@@ -3,6 +3,7 @@ PATH
   specs:
     yablog (0.0.1)
       bootstrap-sass
+      bootstrap-wysihtml5-rails
       devise (~> 3.4)
       haml (~> 4.0)
       jquery-rails
@@ -45,13 +46,10 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
-    autoprefixer-rails (5.1.8)
-      execjs
-      json
     bcrypt (3.1.10)
-      autoprefixer-rails (>= 5.0.0.1)
-      sass (>= 3.2.19)
     bootstrap-sass (3.3.4.1)
+    bootstrap-wysihtml5-rails (0.3.3.7)
+      railties (>= 3.0)
     builder (3.2.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -70,7 +68,6 @@ GEM
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
-    execjs (2.4.0)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.4.1)
@@ -120,13 +117,13 @@ GEM
       sprockets-rails (~> 2.0)
     rails-assets-bootstrap (3.3.4)
       rails-assets-jquery (>= 1.9.1)
-    rails-assets-bootstrap-social (4.8.0)
+    rails-assets-bootstrap-social (4.9.0)
       rails-assets-bootstrap (~> 3)
-      rails-assets-font-awesome (~> 4.2)
+      rails-assets-font-awesome (~> 4.3)
     rails-assets-font-awesome (4.3.0)
-    rails-assets-jquery (2.1.3)
-    rails-assets-metisMenu (1.1.3)
-      rails-assets-bootstrap (~> 3.3.0)
+    rails-assets-jquery (2.1.4)
+    rails-assets-metisMenu (2.0.0)
+      rails-assets-jquery (~> 2.1.3)
     rails-assets-mocha (1.17.1)
     rails-assets-morrisjs (0.5.1)
       rails-assets-jquery (>= 2.1.0)

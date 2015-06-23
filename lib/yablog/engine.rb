@@ -2,6 +2,7 @@ require 'rails-assets-font-awesome'
 require 'rails-assets-metisMenu'
 require 'rails-assets-morrisjs'
 require 'rails-assets-bootstrap-social'
+require 'bootstrap-wysihtml5-rails'
 
 module Yablog
   class Engine < ::Rails::Engine

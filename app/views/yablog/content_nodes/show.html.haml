@@ -19,7 +19,7 @@
   .container
     .row
       .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1
-        %p= @node.body
+        %p= raw(@node.body)
 
         - if @node.is_a? Yablog::Category
           %h2.section-heading Posts:

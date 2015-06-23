@@ -17,3 +17,5 @@
 //= require raphael
 //= require morrisjs
 //= require_tree ./admin
+//= require bootstrap-wysihtml5
+//= require bootstrap-wysihtml5/locales
