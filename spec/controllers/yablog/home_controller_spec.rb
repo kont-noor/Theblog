@@ -5,9 +5,9 @@ module Yablog
     routes { Yablog::Engine.routes }
 
     describe "GET index" do
-      let(:user){ FactoryGirl.create(:confirmed_user) }
+      let(:account){ FactoryGirl.create(:confirmed_account) }
       it "returns http success" do
-        sign_in user
+        sign_in account
         get :index
         expect(response).to have_http_status(:success)
       end

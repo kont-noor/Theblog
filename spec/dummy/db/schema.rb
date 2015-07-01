@@ -11,10 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150124104006) do
+ActiveRecord::Schema.define(version: 20150629084714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "incarnator_accounts", force: true do |t|
+    t.string   "user_name",              default: "", null: false
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "incarnator_accounts", ["confirmation_token"], name: "index_incarnator_accounts_on_confirmation_token", unique: true, using: :btree
+  add_index "incarnator_accounts", ["email"], name: "index_incarnator_accounts_on_email", unique: true, using: :btree
+  add_index "incarnator_accounts", ["reset_password_token"], name: "index_incarnator_accounts_on_reset_password_token", unique: true, using: :btree
+  add_index "incarnator_accounts", ["user_name"], name: "index_incarnator_accounts_on_user_name", unique: true, using: :btree
 
   create_table "yablog_content_nodes", force: true do |t|
     t.string   "type",              null: false
@@ -45,15 +73,15 @@ ActiveRecord::Schema.define(version: 20150124104006) do
   add_index "yablog_content_statuses", ["title"], name: "index_yablog_content_statuses_on_title", unique: true, using: :btree
 
   create_table "yablog_users", force: true do |t|
-    t.string   "user_name",                          null: false
+    t.string   "user_name",              default: "0", null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email",                              null: false
-    t.string   "encrypted_password",                 null: false
+    t.string   "email",                  default: "0", null: false
+    t.string   "encrypted_password",     default: "0", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0, null: false
+    t.integer  "sign_in_count",          default: 0,   null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -73,6 +101,5 @@ ActiveRecord::Schema.define(version: 20150124104006) do
 
   add_foreign_key "yablog_content_nodes", "yablog_content_nodes", name: "yablog_content_nodes_parent_node_id_fk", column: "parent_node_id"
   add_foreign_key "yablog_content_nodes", "yablog_content_statuses", name: "yablog_content_nodes_content_status_id_fk", column: "content_status_id"
-  add_foreign_key "yablog_content_nodes", "yablog_users", name: "yablog_content_nodes_author_id_fk", column: "author_id"
 
 end

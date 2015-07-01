@@ -1,10 +1,17 @@
+GIT
+  remote: https://github.com/kont-noor/Incarnator.git
+  revision: 86fbbbc80890295a43d9a1233a5624965c7e44e9
+  specs:
+    incarnator (0.0.1)
+      devise (~> 3.4)
+      rails (~> 4.1.6)
+
 PATH
   remote: .
   specs:
     yablog (0.0.1)
       bootstrap-sass
       bootstrap-wysihtml5-rails
-      devise (~> 3.4)
       haml (~> 4.0)
       jquery-rails
       rails (~> 4.1)
@@ -58,7 +65,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     coderay (1.1.0)
-    devise (3.4.1)
+    devise (3.5.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -203,6 +210,7 @@ DEPENDENCIES
   capybara
   factory_girl_rails
   foreigner
+  incarnator!
   jquery-rails
   pg (~> 0.17)
   pry-rails

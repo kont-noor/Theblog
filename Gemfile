@@ -28,3 +28,7 @@ end
 group :development do
   gem 'quiet_assets'
 end
+
+group :development, :test do
+  gem 'incarnator', git: "https://github.com/kont-noor/Incarnator.git"
+end
