@@ -2,7 +2,7 @@ module Yablog
   class ContentNode < ActiveRecord::Base
     belongs_to :content_status
     belongs_to :parent_node, class_name: 'Yablog::ContentNode'
-    belongs_to :author, class_name: 'Incarnator::Account'
+    belongs_to :author, class_name: Incarnator.account_model
 
     has_many :child_nodes, class_name: 'Yablog::ContentNode', foreign_key: :parent_node_id
 

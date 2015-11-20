@@ -1,3 +1,4 @@
+require 'incarnator'
 require 'rails-assets-font-awesome'
 require 'rails-assets-metisMenu'
 require 'rails-assets-morrisjs'
