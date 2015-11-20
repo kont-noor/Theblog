@@ -6,6 +6,7 @@ module Yablog
 
     describe "GET index" do
       let(:account){ FactoryGirl.create(:confirmed_account) }
+
       it "returns http success" do
         sign_in account
         get :index

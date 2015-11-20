@@ -51,7 +51,7 @@ module Yablog
 
     private def model_association_param_keys
       model_associations.map do |association|
-        model.reflections[association].foreign_key
+        model.reflections[association.to_s].foreign_key
       end
     end
 
