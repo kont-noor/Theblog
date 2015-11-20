@@ -12,7 +12,7 @@ describe 'categories' do
       FactoryGirl.create(:post, title: "Post3 Title", slug: "slug3",
                          description: "Some post1 description", body: "Lorem ipsum dolor sit amet")
 
-      visit("/yablog/category")
+      visit("/theblog/category")
 
       expect(page).to have_content('Category')
       expect(page).to have_content('category_description')

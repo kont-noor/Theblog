@@ -1,4 +1,4 @@
-Yablog::Engine.routes.draw do
+Theblog::Engine.routes.draw do
   namespace :admin do
     resources :pages
     resources :posts

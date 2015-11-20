@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150625144542) do
   add_index "incarnator_accounts", ["reset_password_token"], name: "index_incarnator_accounts_on_reset_password_token", unique: true, using: :btree
   add_index "incarnator_accounts", ["user_name"], name: "index_incarnator_accounts_on_user_name", unique: true, using: :btree
 
-  create_table "yablog_content_nodes", force: :cascade do |t|
+  create_table "theblog_content_nodes", force: :cascade do |t|
     t.string   "type",              null: false
     t.string   "title",             null: false
     t.string   "slug",              null: false
@@ -58,21 +58,21 @@ ActiveRecord::Schema.define(version: 20150625144542) do
     t.datetime "updated_at"
   end
 
-  add_index "yablog_content_nodes", ["author_id"], name: "index_yablog_content_nodes_on_author_id", using: :btree
-  add_index "yablog_content_nodes", ["slug"], name: "index_yablog_content_nodes_on_slug", using: :btree
-  add_index "yablog_content_nodes", ["title"], name: "index_yablog_content_nodes_on_title", using: :btree
-  add_index "yablog_content_nodes", ["type", "slug"], name: "index_yablog_content_nodes_on_type_and_slug", unique: true, using: :btree
-  add_index "yablog_content_nodes", ["type"], name: "index_yablog_content_nodes_on_type", using: :btree
+  add_index "theblog_content_nodes", ["author_id"], name: "index_theblog_content_nodes_on_author_id", using: :btree
+  add_index "theblog_content_nodes", ["slug"], name: "index_theblog_content_nodes_on_slug", using: :btree
+  add_index "theblog_content_nodes", ["title"], name: "index_theblog_content_nodes_on_title", using: :btree
+  add_index "theblog_content_nodes", ["type", "slug"], name: "index_theblog_content_nodes_on_type_and_slug", unique: true, using: :btree
+  add_index "theblog_content_nodes", ["type"], name: "index_theblog_content_nodes_on_type", using: :btree
 
-  create_table "yablog_content_statuses", force: :cascade do |t|
+  create_table "theblog_content_statuses", force: :cascade do |t|
     t.string   "title",       null: false
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "yablog_content_statuses", ["title"], name: "index_yablog_content_statuses_on_title", unique: true, using: :btree
+  add_index "theblog_content_statuses", ["title"], name: "index_theblog_content_statuses_on_title", unique: true, using: :btree
 
-  add_foreign_key "yablog_content_nodes", "yablog_content_nodes", column: "parent_node_id"
-  add_foreign_key "yablog_content_nodes", "yablog_content_statuses", column: "content_status_id"
+  add_foreign_key "theblog_content_nodes", "theblog_content_nodes", column: "parent_node_id"
+  add_foreign_key "theblog_content_nodes", "theblog_content_statuses", column: "content_status_id"
 end

@@ -4,7 +4,7 @@ describe 'admin dashboard' do
   let!(:account){ FactoryGirl.create :confirmed_account }
 
   it "should require account login" do
-    visit "/yablog/admin"
+    visit "/theblog/admin"
 
     expect(page).to have_content('Log in')
 

@@ -5,7 +5,7 @@ describe "pages" do
     FactoryGirl.create(:page, title: "Title", slug: "slug",
                        description: "Some page description", body: "Lorem ipsum dolor sit amet")
 
-    visit("/yablog/slug")
+    visit("/theblog/slug")
 
     expect(page).to have_content('Title')
     expect(page).to have_content('Some page description')

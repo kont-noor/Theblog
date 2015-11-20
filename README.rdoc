@@ -1,12 +1,13 @@
-= Yablog - yet another default web log for most purposes
+= Theblog - yet another default web log for most purposes
 
-{<img src="https://travis-ci.org/kont-noor/WebLog.svg" alt="Build Status" />}[https://travis-ci.org/kont-noor/WebLog]
+{<img src="https://travis-ci.org/kont-noor/Theblog.svg" alt="Build Status" />}[https://travis-ci.org/kont-noor/Theblog]
+{<img src="https://badge.fury.io/rb/theblog.svg" alt="Gem Version" />}[https://badge.fury.io/rb/theblog]
 
 == Usage
 
 To install the blog engine add the following line to `Gemfile`
 
-  gem 'yablog', git: 'https://github.com/kont-noor/WebLog'
+  gem 'theblog'
 
 as well as one more at the beginning of the file
 
@@ -16,7 +17,7 @@ as well as one more at the beginning of the file
 
 Then mount your application at `config/routes.rb`
 
-  mount Yablog::Engine, at: "/blog"
+  mount Theblog::Engine, at: "/blog"
 
 And run `rake db:migrate`
 

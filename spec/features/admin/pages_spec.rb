@@ -4,7 +4,7 @@ describe 'admin pages' do
   let!(:account){ FactoryGirl.create :confirmed_account }
 
   it "should manage pages" do
-    visit "yablog/admin"
+    visit "theblog/admin"
 
     expect(page).to have_content('Log in')
 
@@ -41,7 +41,7 @@ describe 'admin pages' do
     expect(page).to have_content('Some page description')
     expect(page).to have_content('Lorem Ipsum')
 
-    visit('/yablog/admin/pages')
+    visit('/theblog/admin/pages')
     click_on('Edit')
 
     fill_in('Title', with: "New page name")

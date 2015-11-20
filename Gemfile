@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 source 'https://rails-assets.org'
 
-# Declare your gem's dependencies in yablog.gemspec.
+# Declare your gem's dependencies in theblog.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 gemspec

@@ -8,7 +8,7 @@ describe 'posts' do
                          description: "Some post description", body: "Lorem ipsum dolor sit amet",
                          parent_node: category)
 
-      visit("/yablog/category/slug")
+      visit("/theblog/category/slug")
 
       expect(page).to have_content('Post Title')
       expect(page).to have_content('Some post description')

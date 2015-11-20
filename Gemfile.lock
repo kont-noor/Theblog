@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    yablog (0.0.1)
+    theblog (0.0.1)
       bootstrap-sass
       bootstrap-wysihtml5-rails
       haml (~> 4.0)
@@ -246,4 +246,4 @@ DEPENDENCIES
   sass-rails
   shoulda
   simplecov
-  yablog!
+  theblog!
