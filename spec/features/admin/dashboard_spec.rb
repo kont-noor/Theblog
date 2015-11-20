@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 describe 'admin dashboard' do
-  let!(:user){ Yablog::User.create email: 'fake@mail.com', user_name: 'username', password: 'password', confirmed_at: Time.zone.now }
+  let!(:account){ FactoryGirl.create :confirmed_account }
 
-  it "should require user login" do
+  it "should require account login" do
     visit "/yablog/admin"
 
     expect(page).to have_content('Log in')
 
-    fill_in('Email', with: user.email)
-    fill_in('Password', with: 'password')
+    fill_in('Email', with: account.email)
+    fill_in('Password', with: 'qwertyui')
     click_on('Log in')
 
     expect(page).to have_content('Signed in successfully')

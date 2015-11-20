@@ -14,6 +14,7 @@ class CreateYablogContentNodes < ActiveRecord::Migration
       t.timestamps
     end
 
+    add_index :yablog_content_nodes, :author_id
     add_index :yablog_content_nodes, :type
     add_index :yablog_content_nodes, :title
     add_index :yablog_content_nodes, :slug
@@ -23,7 +24,5 @@ class CreateYablogContentNodes < ActiveRecord::Migration
                     "yablog_content_statuses", column: :content_status_id
     add_foreign_key "yablog_content_nodes",
                     "yablog_content_nodes", column: :parent_node_id
-    add_foreign_key "yablog_content_nodes",
-                    "yablog_users", column: :author_id
   end
 end

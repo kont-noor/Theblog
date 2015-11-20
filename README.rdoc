@@ -22,7 +22,7 @@ And run `rake db:migrate`
 
 For now user registration is not implemented so create the confirmed user in the rails console
 
-  Yablog::User.create email: 'fake@mail.com', user_name: 'username', password: 'password',
+  Incarnator::Account.create email: 'fake@mail.com', user_name: 'username', password: 'password',
                       confirmed_at: Time.now
 
 Follow `/blog/admin` to access the admin dashboard
