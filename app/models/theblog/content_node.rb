@@ -12,7 +12,7 @@ module Theblog
     scope :by_parent, ->(parent_slug) do
       if parent_slug.present?
         joins('JOIN theblog_content_nodes AS parents ON theblog_content_nodes.parent_node_id = parents.id').
-          where('parents.slug = ?', parent_slug)
+          where(parents: {slug: parent_slug})
       else
         where(parent_node_id: nil)
       end
