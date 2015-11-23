@@ -1,4 +1,5 @@
 require 'incarnator'
+require 'pundit'
 require 'jquery-rails'
 require 'sass'
 require 'rails-assets-font-awesome'

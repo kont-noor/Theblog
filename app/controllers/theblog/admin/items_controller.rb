@@ -14,6 +14,7 @@ module Theblog
     end
 
     def update
+      authorize item, :update?
       if item.update(permitted_params)
         flash[:notice] = "Item updated"
         redirect_to action: :show
