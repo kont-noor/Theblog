@@ -228,7 +228,6 @@ PLATFORMS
 DEPENDENCIES
   capybara
   factory_girl_rails
-  jquery-rails
   pg (~> 0.17)
   pry-rails
   quiet_assets

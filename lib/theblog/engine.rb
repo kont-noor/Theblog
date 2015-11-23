@@ -1,4 +1,6 @@
 require 'incarnator'
+require 'jquery-rails'
+require 'sass'
 require 'rails-assets-font-awesome'
 require 'rails-assets-metisMenu'
 require 'rails-assets-morrisjs'
