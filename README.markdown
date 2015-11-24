@@ -36,3 +36,7 @@ For now user registration is not implemented so create the confirmed user in the
 ```
 
 Follow `/blog/admin` to access the admin dashboard
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kont-noor/theblog/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
