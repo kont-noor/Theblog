@@ -1,29 +1,38 @@
-= Theblog - yet another default web log for most purposes
+# Theblog - Default blogging engine for most purposes
 
-{<img src="https://travis-ci.org/kont-noor/Theblog.svg" alt="Build Status" />}[https://travis-ci.org/kont-noor/Theblog]
-{<img src="https://badge.fury.io/rb/theblog.svg" alt="Gem Version" />}[https://badge.fury.io/rb/theblog]
+[![Build Status](https://travis-ci.org/kont-noor/Theblog.svg?branch=master)](https://travis-ci.org/kont-noor/Theblog)
+[![Gem Version](https://badge.fury.io/rb/theblog.svg)](https://badge.fury.io/rb/theblog)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/kont-noor/theblog/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
-== Usage
+## Usage
 
 To install the blog engine add the following line to `Gemfile`
 
+```ruby
   gem 'theblog'
+```
 
 as well as one more at the beginning of the file
 
+```ruby
   source 'https://rails-assets.org'
+```
 
 (this is needed for now for some gems)
 
 Then mount your application at `config/routes.rb`
 
+```ruby
   mount Theblog::Engine, at: "/blog"
+```
 
 And run `rake db:migrate`
 
 For now user registration is not implemented so create the confirmed user in the rails console
 
+```ruby
   Incarnator::Account.create email: 'fake@mail.com', user_name: 'username', password: 'password',
                       confirmed_at: Time.now
+```
 
 Follow `/blog/admin` to access the admin dashboard
