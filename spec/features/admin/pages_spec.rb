@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe 'admin pages' do
   let!(:account){ FactoryGirl.create :confirmed_account }
+  let(:another_account) { FactoryGirl.create :confirmed_account }
+  let!(:another_page) { FactoryGirl.create :page, author: another_account }
 
   it "should manage pages" do
     visit "theblog/admin"
@@ -35,7 +37,7 @@ describe 'admin pages' do
     expect(page).to have_content('Some page description')
     expect(page).to have_content('Lorem Ipsum')
 
-    click_on('View')
+    all("a:contains('View')").last.click
 
     expect(page).to have_content('Page title')
     expect(page).to have_content('Some page description')
