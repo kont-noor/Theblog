@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625144542) do
+ActiveRecord::Schema.define(version: 20151127182617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,15 @@ ActiveRecord::Schema.define(version: 20150625144542) do
   end
 
   add_index "theblog_content_statuses", ["title"], name: "index_theblog_content_statuses_on_title", unique: true, using: :btree
+
+  create_table "theblog_roles", force: :cascade do |t|
+    t.string   "name",        default: "", null: false
+    t.string   "description"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "theblog_roles", ["name"], name: "index_theblog_roles_on_name", unique: true, using: :btree
 
   add_foreign_key "theblog_content_nodes", "theblog_content_nodes", column: "parent_node_id"
   add_foreign_key "theblog_content_nodes", "theblog_content_statuses", column: "content_status_id"
