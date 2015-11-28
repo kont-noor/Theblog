@@ -1,0 +1,28 @@
+%h4
+  = t('comments.comments')
+
+- node.comments.each do |comment|
+  .comment
+    %blockquote
+      = comment.body
+      %small
+        = comment.author.user_name
+        - if comment.author.first_name || comment.author.last_name
+          (
+          = comment.author.first_name
+          = comment.author.last_name
+          )
+      - if policy(comment).delete?
+        %small
+          = link_to 'remove', comment_path(comment), method: :delete
+          / = link_to comment_path(comment), method: :delete, "aria-label" => "Close", type: "button" do
+          /   %span{"aria-hidden" => "true"} &times;
+
+- if current_account
+  %h4= t('comments.add_your')
+
+  = simple_form_for comment, html: {class: 'form-inline'} do |f|
+    = f.input :body, label: false, wrapper_html: {class: 'form-group'}
+    .hidden
+      = f.input_field :parent_node_id, value: node.id
+    = f.button :submit, t('common.save'), class: 'btn-default btn-sm'

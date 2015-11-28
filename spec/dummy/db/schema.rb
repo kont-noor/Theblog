@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20151212093731) do
 
   create_table "theblog_content_nodes", force: :cascade do |t|
     t.string   "type",                           null: false
-    t.string   "title",                          null: false
-    t.string   "slug",                           null: false
+    t.string   "title"
+    t.string   "slug"
     t.text     "description"
     t.text     "body"
     t.string   "tags"

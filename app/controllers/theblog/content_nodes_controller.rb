@@ -1,7 +1,5 @@
 module Theblog
   class ContentNodesController < Theblog::ApplicationController
-    skip_before_action :authenticate_user!, only: [:show]
-
     def show
       @node = Theblog::ContentNode.published.
         by_parent(params[:category]).
@@ -13,5 +11,10 @@ module Theblog
 
       redirect_to theblog.root_path, notice: "Content not found" unless @node.present?
     end
+
+    private def comment
+      @node.comments.new
+    end
+    helper_method :comment
   end
 end

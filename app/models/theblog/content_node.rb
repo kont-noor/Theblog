@@ -7,8 +7,7 @@ module Theblog
 
     has_many :child_nodes, class_name: 'Theblog::ContentNode', foreign_key: :parent_node_id
 
-    validates_presence_of :title, :slug, :content_status
-    validates_uniqueness_of :slug, scope: :type
+    validates_presence_of :content_status
 
     scope :by_parent, ->(parent_slug) do
       if parent_slug.present?

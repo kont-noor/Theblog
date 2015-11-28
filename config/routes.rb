@@ -13,7 +13,10 @@ Theblog::Engine.routes.draw do
     root 'dashboard#index'
   end
 
-  get '/:slug' => 'content_nodes#show', :as => :root_content_node
-  get '/:category/:slug' => 'content_nodes#show', :as => :content_node
+  get '/:slug' => 'content_nodes#show', as: :root_content_node
+  get '/:category/:slug' => 'content_nodes#show', as: :content_node
+
+  resources :comments, only: [:create, :destroy]
+
   root 'home#index'
 end
