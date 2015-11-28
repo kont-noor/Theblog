@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 describe 'admin pages' do
-  let!(:account){ FactoryGirl.create :confirmed_account }
-  let(:another_account) { FactoryGirl.create :confirmed_account }
-  let!(:another_page) { FactoryGirl.create :page, author: another_account }
+  let!(:account) { FactoryGirl.create(:editor) }
+
+  before do
+    another_account = FactoryGirl.create :confirmed_account
+    FactoryGirl.create :page, author: another_account
+  end
 
   it "should manage pages" do
     visit "theblog/admin"

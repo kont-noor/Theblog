@@ -6,6 +6,14 @@ FactoryGirl.define do
 
     factory :confirmed_account do
       confirmed_at Time.now
+
+      Theblog::Role.pluck(:name).each do |role|
+        factory(role) do
+          after(:create) do |account|
+            Theblog::Role.find_by(name: role).accounts << account
+          end
+        end
+      end
     end
   end
 end

@@ -1,5 +1,5 @@
 module Theblog
-  class PagePolicy < ApplicationPolicy
+  class PostPolicy < ApplicationPolicy
     def create?
       account_has_role?(user, [:editor, :moderator, :admin])
     end

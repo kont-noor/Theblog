@@ -39,6 +39,10 @@ module Theblog
       Pundit.policy_scope!(user, record.class)
     end
 
+    def account_has_role?(account, role)
+      Theblog::AccountsRole.includes(:role).exists?(account: account, theblog_roles: { name: role})
+    end
+
     class Scope
       attr_reader :user, :scope
 
