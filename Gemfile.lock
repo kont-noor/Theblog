@@ -87,17 +87,6 @@ GEM
     gravtastic (3.2.6)
     haml (4.0.7)
       tilt
-    haml-rails (0.9.0)
-      actionpack (>= 4.0.1)
-      activesupport (>= 4.0.1)
-      haml (>= 4.0.6, < 5.0)
-      html2haml (>= 1.0.1)
-      railties (>= 4.0.1)
-    html2haml (2.0.0)
-      erubis (~> 2.7.0)
-      haml (~> 4.0.0)
-      nokogiri (~> 1.6.0)
-      ruby_parser (~> 3.5)
     i18n (0.7.0)
     incarnator (0.0.1)
       devise (= 3.5.1)
@@ -189,8 +178,6 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.1)
-    ruby_parser (3.7.2)
-      sexp_processor (~> 4.1)
     sass (3.4.13)
     sass-rails (5.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -198,7 +185,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
-    sexp_processor (4.6.0)
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
       shoulda-matchers (>= 1.4.1, < 3.0)
@@ -234,16 +220,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
   capybara
   factory_girl_rails
-  haml-rails
   jquery-rails
   pg (~> 0.17)
   pry-rails
   quiet_assets
   rspec-rails
-  sass-rails
   shoulda
   simplecov
   theblog!
+
+BUNDLED WITH
+   1.10.6

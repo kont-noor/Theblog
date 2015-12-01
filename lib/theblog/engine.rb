@@ -3,6 +3,7 @@ require 'rails-assets-font-awesome'
 require 'rails-assets-metisMenu'
 require 'rails-assets-morrisjs'
 require 'rails-assets-bootstrap-social'
+require 'bootstrap-sass'
 require 'bootstrap-wysihtml5-rails'
 
 module Theblog
