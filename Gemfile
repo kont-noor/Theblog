@@ -14,9 +14,6 @@ gem 'rspec-rails'
 gem 'factory_girl_rails'
 gem 'pry-rails'
 
-gem 'bootstrap-sass'
-gem 'sass-rails'
-gem 'haml-rails'
 gem 'jquery-rails'
 
 group :test do
