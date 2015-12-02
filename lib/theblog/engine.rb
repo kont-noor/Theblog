@@ -5,6 +5,7 @@ require 'rails-assets-morrisjs'
 require 'rails-assets-bootstrap-social'
 require 'bootstrap-sass'
 require 'bootstrap-wysihtml5-rails'
+require 'foreigner' if Rails::VERSION::STRING < "4.2"
 
 module Theblog
   class Engine < ::Rails::Engine
