@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    theblog (0.0.1)
+    theblog (0.0.1.1)
       bootstrap-sass
       bootstrap-wysihtml5-rails
       haml (~> 4.0)
@@ -236,6 +236,3 @@ DEPENDENCIES
   shoulda
   simplecov
   theblog!
-
-BUNDLED WITH
-   1.10.6

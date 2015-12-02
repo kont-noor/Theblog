@@ -24,6 +24,7 @@ Then mount your application at `config/routes.rb`
 
 ```ruby
   mount Theblog::Engine, at: "/blog"
+  mount Incarnator::Engine, at: "/auth"
 ```
 
 And run `rake db:migrate`
@@ -35,4 +36,4 @@ For now user registration is not implemented so create the confirmed user in the
                       confirmed_at: Time.now
 ```
 
-Follow `/blog/admin` to access the admin dashboard
+Follow `/blog/admin` to access the admin dashboard and `/blog` to get blog frontend.
