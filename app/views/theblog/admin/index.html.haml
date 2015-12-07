@@ -9,6 +9,6 @@
         %td= item.send(key)
       %td
         = link_to_item(item)
-        = link_to_edit_item(item)
+        = link_to_edit_item(item) if policy(item).update?
 
 = link_to_new_item(model, class: 'btn btn-primary')

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625144542) do
+ActiveRecord::Schema.define(version: 20151127183614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20150625144542) do
   add_index "incarnator_accounts", ["reset_password_token"], name: "index_incarnator_accounts_on_reset_password_token", unique: true, using: :btree
   add_index "incarnator_accounts", ["user_name"], name: "index_incarnator_accounts_on_user_name", unique: true, using: :btree
 
+  create_table "theblog_accounts_roles", force: :cascade do |t|
+    t.integer  "account_id", null: false
+    t.integer  "role_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "theblog_accounts_roles", ["account_id", "role_id"], name: "index_theblog_accounts_roles_on_account_id_and_role_id", unique: true, using: :btree
+  add_index "theblog_accounts_roles", ["account_id"], name: "index_theblog_accounts_roles_on_account_id", using: :btree
+  add_index "theblog_accounts_roles", ["role_id"], name: "index_theblog_accounts_roles_on_role_id", using: :btree
+
   create_table "theblog_content_nodes", force: :cascade do |t|
     t.string   "type",              null: false
     t.string   "title",             null: false
@@ -73,6 +84,17 @@ ActiveRecord::Schema.define(version: 20150625144542) do
 
   add_index "theblog_content_statuses", ["title"], name: "index_theblog_content_statuses_on_title", unique: true, using: :btree
 
+  create_table "theblog_roles", force: :cascade do |t|
+    t.string   "name",        default: "", null: false
+    t.string   "description"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "theblog_roles", ["name"], name: "index_theblog_roles_on_name", unique: true, using: :btree
+
+  add_foreign_key "theblog_accounts_roles", "incarnator_accounts", column: "account_id"
+  add_foreign_key "theblog_accounts_roles", "theblog_roles", column: "role_id"
   add_foreign_key "theblog_content_nodes", "theblog_content_nodes", column: "parent_node_id"
   add_foreign_key "theblog_content_nodes", "theblog_content_statuses", column: "content_status_id"
 end

@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :theblog_content_node, :class => 'Theblog::ContentNode' do
     title "MyString"
-    slug "MyString"
+    sequence(:slug) { |n| "slug_#{n}" }
     description "MyText"
     body "MyText"
     tags "MyString"

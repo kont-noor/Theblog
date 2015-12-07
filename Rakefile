@@ -20,8 +20,17 @@ load 'rails/tasks/engine.rake'
 Bundler::GemHelper.install_tasks
 
 Dir[File.join(File.dirname(__FILE__), 'tasks/**/*.rake')].each {|f| load f }
+
 require 'rspec/core'
 require 'rspec/core/rake_task'
 desc "Run all specs in spec directory (excluding plugin specs)"
 RSpec::Core::RakeTask.new(:spec => 'app:db:test:prepare')
-task :default => :spec
+task default: :spec
+
+task 'db:seed' => [:load_app, :environment] do
+  Theblog::Engine.load_seed
+end
+
+Rake::Task['app:db:test:prepare'].enhance do
+  Rake::Task['db:seed'].invoke
+end

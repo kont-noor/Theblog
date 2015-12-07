@@ -14,8 +14,6 @@ gem 'rspec-rails'
 gem 'factory_girl_rails'
 gem 'pry-rails'
 
-gem 'jquery-rails'
-
 group :test do
   gem 'shoulda'
   gem 'simplecov'

@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency "haml", "~> 4.0"
   s.add_dependency "simple_form", "~> 3.0"
   s.add_dependency "incarnator", "~> 0.0.1.1"
+  s.add_dependency "pundit", "~> 1.0.1"
 
   s.add_dependency "bootstrap-sass"
   s.add_dependency "sass-rails"

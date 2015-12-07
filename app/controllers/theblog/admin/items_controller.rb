@@ -5,6 +5,7 @@ module Theblog
     end
 
     def create
+      authorize model, :create?
       if @item = model.create(permitted_params.merge({author: current_account}))
         flash[:notice] = "Item created"
         redirect_to action: :index
@@ -14,6 +15,7 @@ module Theblog
     end
 
     def update
+      authorize item, :update?
       if item.update(permitted_params)
         flash[:notice] = "Item updated"
         redirect_to action: :show
