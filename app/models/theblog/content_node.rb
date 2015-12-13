@@ -1,12 +1,13 @@
 module Theblog
   class ContentNode < ActiveRecord::Base
-    belongs_to :content_status
+    include AASM
+
     belongs_to :parent_node, class_name: 'Theblog::ContentNode'
     belongs_to :author, class_name: Incarnator.account_model
 
     has_many :child_nodes, class_name: 'Theblog::ContentNode', foreign_key: :parent_node_id
 
-    validates_presence_of :title, :slug
+    validates_presence_of :title, :slug, :content_status
     validates_uniqueness_of :slug, scope: :type
 
     scope :by_parent, ->(parent_slug) do
@@ -15,6 +16,29 @@ module Theblog
           where(parents: {slug: parent_slug})
       else
         where(parent_node_id: nil)
+      end
+    end
+
+    aasm :content_status do
+      state :drafted, initial: true
+      state :published
+      state :blocked
+      state :unblocked
+
+      event :publish do
+        transitions from: :drafted, to: :published
+      end
+
+      event :draft do
+        transitions from: :published, to: :drafted
+      end
+
+      event :block do
+        transitions from: :any, to: :blocked
+      end
+
+      event :unblock do
+        transitions from: :blocked, to: :unblocked
       end
     end
   end

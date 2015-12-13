@@ -5,7 +5,6 @@ FactoryGirl.define do
     description "MyText"
     body "MyText"
     tags "MyString"
-    content_status nil
 
     factory :category, class: 'Theblog::Category' do
     end

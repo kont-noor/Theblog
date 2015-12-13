@@ -40,7 +40,7 @@ describe 'admin pages' do
     expect(page).to have_content('Some page description')
     expect(page).to have_content('Lorem Ipsum')
 
-    all("a:contains('View')").last.click
+    all("a:contains('View')").first.click
 
     expect(page).to have_content('Page title')
     expect(page).to have_content('Some page description')
