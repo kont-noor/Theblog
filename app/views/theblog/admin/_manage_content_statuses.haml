@@ -1,0 +1,3 @@
+- [:draft, :publish, :block, :unblock].each do |action|
+  - if policy(item).update? && item.send("may_#{action}?")
+    = link_to_update_status(item, action)

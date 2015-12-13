@@ -4,6 +4,14 @@ module Theblog
       link_to "View", path_to_item(item)
     end
 
+    def link_to_update_status(item, action)
+      link_to action.to_s.humanize, path_to_update_status(item, action), method: :put
+    end
+
+    def path_to_update_status(item, action)
+      theblog.send("admin_#{model_class(item.class)}_#{action}_path", item)
+    end
+
     def link_to_edit_item(item)
       link_to "Edit", path_to_edit_item(item)
     end
@@ -13,15 +21,15 @@ module Theblog
     end
 
     def path_to_item(item)
-      send("admin_#{model_class(item.class)}_path", item)
+      theblog.send("admin_#{model_class(item.class)}_path", item)
     end
 
     def path_to_edit_item(item)
-      send("edit_admin_#{model_class(item.class)}_path", item)
+      theblog.send("edit_admin_#{model_class(item.class)}_path", item)
     end
 
     def path_to_new_item(model)
-      send("new_admin_#{model_class(model)}_path")
+      theblog.send("new_admin_#{model_class(model)}_path")
     end
 
     def model_class(model)

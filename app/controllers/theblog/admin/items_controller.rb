@@ -1,5 +1,8 @@
 module Theblog
   class Admin::ItemsController < AdminController
+
+    before_action :update_content_status, only: [:draft, :publish, :block, :unblock]
+
     def new
       @item = model.new
     end
@@ -24,8 +27,30 @@ module Theblog
       end
     end
 
+    def draft; end
+
+    def publish; end
+
+    def block; end
+
+    def unblock; end
+
+    private def update_content_status
+      state = params["action"]
+      authorize item, :"#{state}?"
+
+      item.send("#{state}!")
+      redirect_to :back, notice: "Item is #{state}ed"
+    rescue AASM::InvalidTransition => err
+      redirect_to :back, alert: "Item is not #{state}ed"
+    end
+
     private def item
-      @item ||= model.find(params[:id])
+      @item ||= if params.has_key?("#{model_params_key}_id")
+                  model.find(params["#{model_params_key}_id"])
+                else
+                  model.find(params[:id])
+                end
     end
     helper_method :item
 
