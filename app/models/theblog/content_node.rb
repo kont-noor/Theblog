@@ -23,7 +23,6 @@ module Theblog
       state :drafted, initial: true
       state :published
       state :blocked
-      state :unblocked
 
       event :publish do
         transitions from: :drafted, to: :published
@@ -34,11 +33,11 @@ module Theblog
       end
 
       event :block do
-        transitions from: :any, to: :blocked
+        transitions from: [:published, :drafted], to: :blocked
       end
 
       event :unblock do
-        transitions from: :blocked, to: :unblocked
+        transitions from: :blocked, to: :drafted
       end
     end
   end

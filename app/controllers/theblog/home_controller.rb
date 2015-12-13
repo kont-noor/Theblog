@@ -3,10 +3,10 @@ module Theblog
     skip_before_action :authenticate_user!
 
     def index
-      @node = Page.find_by(slug: 'home')
-      @node ||= Page.first
+      @node = Page.published.find_by(slug: 'home')
+      @node ||= Page.published.first
 
-      @posts = Post.all
+      @posts = Post.published.all
     end
   end
 end

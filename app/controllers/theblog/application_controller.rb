@@ -4,7 +4,7 @@ module Theblog
     protect_from_forgery with: :exception
 
     private def menu
-      @menu ||= Page.all
+      @menu ||= Page.published
     end
     helper_method :menu
 

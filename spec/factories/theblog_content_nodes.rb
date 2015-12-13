@@ -1,16 +1,20 @@
 FactoryGirl.define do
   factory :theblog_content_node, :class => 'Theblog::ContentNode' do
-    title "MyString"
+    sequence(:title) { |n| "Node ##{n} title" }
     sequence(:slug) { |n| "slug_#{n}" }
-    description "MyText"
+    sequence(:description) { |n| "Node ##{n} brief description" }
     body "MyText"
     tags "MyString"
+    content_status "published"
 
-    factory :category, class: 'Theblog::Category' do
-    end
-    factory :page, class: "Theblog::Page" do
-    end
-    factory :post, class: "Theblog::Post" do
+    [:category, :page, :post].each do |subclass|
+      factory subclass, class: "Theblog::#{subclass.capitalize}" do
+        [:drafted, :published, :blocked].each do |status|
+          factory "#{status}_#{subclass}" do
+            content_status status
+          end
+        end
+      end
     end
   end
 end
