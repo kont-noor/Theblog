@@ -6,7 +6,7 @@ module Theblog
       @node = Page.published.find_by(slug: 'home')
       @node ||= Page.published.first
 
-      @posts = Post.published.all
+      @posts = Post.published
     end
   end
 end
