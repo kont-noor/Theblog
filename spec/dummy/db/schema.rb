@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127183614) do
+ActiveRecord::Schema.define(version: 20151212093731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(version: 20151127183614) do
   add_index "theblog_accounts_roles", ["role_id"], name: "index_theblog_accounts_roles_on_role_id", using: :btree
 
   create_table "theblog_content_nodes", force: :cascade do |t|
-    t.string   "type",              null: false
-    t.string   "title",             null: false
-    t.string   "slug",              null: false
+    t.string   "type",                           null: false
+    t.string   "title",                          null: false
+    t.string   "slug",                           null: false
     t.text     "description"
     t.text     "body"
     t.string   "tags"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20151127183614) do
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "content_status",    default: "", null: false
   end
 
   add_index "theblog_content_nodes", ["author_id"], name: "index_theblog_content_nodes_on_author_id", using: :btree

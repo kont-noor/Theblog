@@ -10,5 +10,6 @@
       %td
         = link_to_item(item)
         = link_to_edit_item(item) if policy(item).update?
+        = render "manage_content_statuses", item: item
 
 = link_to_new_item(model, class: 'btn btn-primary')

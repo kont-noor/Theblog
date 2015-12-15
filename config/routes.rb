@@ -1,8 +1,14 @@
 Theblog::Engine.routes.draw do
   namespace :admin do
-    resources :pages
-    resources :posts
-    resources :categories
+    [:pages, :posts, :categories].each do |res|
+      resources res do
+        put :draft
+        put :publish
+        put :block
+        put :unblock
+      end
+    end
+
     resources :content_statuses
     root 'dashboard#index'
   end

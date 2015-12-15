@@ -24,5 +24,5 @@
         - if @node.is_a? Theblog::Category
           %h2.section-heading Posts:
           %ul
-            - @node.child_nodes.each do |child|
+            - @node.child_nodes.published.each do |child|
               %li= link_to_content_node(child)
