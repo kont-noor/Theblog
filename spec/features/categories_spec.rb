@@ -25,4 +25,22 @@ describe 'categories' do
       expect(page).to have_no_content(post.title)
     end
   end
+
+  it "displays posts with pagination" do
+    posts = FactoryGirl.create_list(:post, 100, parent_node: subject)
+
+    visit(theblog.root_content_node_path(subject.slug))
+
+    expect(all("ul.posts>li").count).to eq(25)
+    posts[-25...-1].each do |post|
+      expect(page).to have_content(post.title)
+    end
+
+    click_on("Next ›")
+
+    expect(all("ul.posts>li").count).to eq(25)
+    posts[-50...-25].each do |post|
+      expect(page).to have_content(post.title)
+    end
+  end
 end

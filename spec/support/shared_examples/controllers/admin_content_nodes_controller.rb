@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.shared_examples :admin_content_nodes_controller_update do
   it "raises exception if user tries to update another content_node" do
     expect{ patch :update, id: content_node.id }.
