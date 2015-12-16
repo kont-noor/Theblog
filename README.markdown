@@ -12,14 +12,6 @@ To install the blog engine add the following line to `Gemfile`
   gem 'theblog'
 ```
 
-as well as one more at the beginning of the file
-
-```ruby
-  source 'https://rails-assets.org'
-```
-
-(this is needed for now for some gems)
-
 Then mount your application at `config/routes.rb`
 
 ```ruby
