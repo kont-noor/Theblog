@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.shared_examples :frontend_content_node do
   it "displays node" do
     visit(theblog.root_content_node_path(subject.slug))

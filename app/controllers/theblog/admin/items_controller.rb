@@ -55,7 +55,7 @@ module Theblog
     helper_method :item
 
     private def items
-      @items ||= model.all
+      @items ||= model.page params[:page]
     end
     helper_method :items
 

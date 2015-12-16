@@ -19,7 +19,3 @@ group :test do
   gem 'simplecov'
   gem 'capybara'
 end
-
-group :development do
-  gem 'quiet_assets'
-end

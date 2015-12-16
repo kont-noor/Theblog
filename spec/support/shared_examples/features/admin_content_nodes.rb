@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.shared_examples :admin_content_node do
   let(:node_button) { node_name.to_s.humanize }
 
@@ -139,6 +137,26 @@ RSpec.shared_examples :admin_content_node do
       expect(page).to have_no_link("Block")
       expect(page).to have_no_link("Unblock")
       expect(page).to have_no_link("Publish")
+    end
+  end
+
+  it "paginates items" do
+    items = FactoryGirl.create_list(node_name, 100)
+
+    within('.sidebar') do
+      click_on node_button.pluralize
+    end
+
+    expect(all("tr").count).to eq(26)
+    items[-25...-1].each do |item|
+      expect(page).to have_content(item.title)
+    end
+
+    click_on("Next ›")
+
+    expect(all("tr").count).to eq(26)
+    items[-50...-25].each do |item|
+      expect(page).to have_content(item.title)
     end
   end
 

@@ -8,6 +8,7 @@ PATH
       haml (~> 4.0)
       incarnator (~> 0.0.1.1)
       jquery-rails
+      kaminari
       pundit (~> 1.0.1)
       rails (>= 4.0.1)
       rails-assets-bootstrap-social
@@ -107,6 +108,9 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -128,8 +132,6 @@ GEM
       pry (>= 0.9.10)
     pundit (1.0.1)
       activesupport (>= 3.0.0)
-    quiet_assets (1.1.0)
-      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -238,7 +240,6 @@ DEPENDENCIES
   factory_girl_rails
   pg (~> 0.17)
   pry-rails
-  quiet_assets
   rspec-rails
   shoulda
   simplecov
