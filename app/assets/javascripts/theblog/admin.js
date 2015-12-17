@@ -13,9 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require metisMenu
-//= require raphael
-//= require morrisjs
 //= require_tree ./admin
 //= require bootstrap-wysihtml5
 //= require bootstrap-wysihtml5/locales

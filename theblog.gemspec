@@ -37,10 +37,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency "bootstrap-wysihtml5-rails"
 
-  s.add_dependency "rails-assets-font-awesome"
-  s.add_dependency "rails-assets-metisMenu"
-  s.add_dependency "rails-assets-morrisjs"
-  s.add_dependency "rails-assets-bootstrap-social"
-
   s.add_development_dependency "pg", "~> 0.17"
 end
