@@ -4,6 +4,7 @@ require 'rspec/rails'
 require 'simplecov'
 require 'shoulda'
 require 'aasm/rspec'
+require 'fantaskspec'
 
 FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
 FactoryGirl.definition_file_paths << File.join(Incarnator::Engine.root, 'spec/factories')
@@ -26,6 +27,8 @@ FactoryGirl.find_definitions
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
+
+  config.infer_rake_task_specs_from_file_location!
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

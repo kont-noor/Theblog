@@ -21,11 +21,10 @@ Then mount your application at `config/routes.rb`
 
 And run `rake db:migrate`
 
-For now user registration is not implemented so create the confirmed user in the rails console
+To add admin account run the following rake task:
 
-```ruby
-  Incarnator::Account.create email: 'fake@mail.com', user_name: 'username', password: 'password',
-                      confirmed_at: Time.now
+```
+  rake app:theblog:create_account[admin,admin@theblog.com,password]
 ```
 
 Follow `/blog/admin` to access the admin dashboard and `/blog` to get blog frontend.

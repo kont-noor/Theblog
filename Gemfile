@@ -17,4 +17,5 @@ group :test do
   gem 'shoulda'
   gem 'simplecov'
   gem 'capybara'
+  gem 'fantaskspec'
 end
