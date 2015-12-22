@@ -91,6 +91,9 @@ GEM
     fantaskspec (0.9.9)
       rake (~> 10.0)
       rspec (~> 3.0)
+    generator_spec (0.9.3)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     gravtastic (3.2.6)
@@ -226,12 +229,10 @@ DEPENDENCIES
   capybara
   factory_girl_rails
   fantaskspec
+  generator_spec
   pg (~> 0.17)
   pry-rails
   rspec-rails
   shoulda
   simplecov
   theblog!
-
-BUNDLED WITH
-   1.10.6

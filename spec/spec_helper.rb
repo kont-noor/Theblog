@@ -5,6 +5,7 @@ require 'simplecov'
 require 'shoulda'
 require 'aasm/rspec'
 require 'fantaskspec'
+require 'generator_spec'
 
 FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
 FactoryGirl.definition_file_paths << File.join(Incarnator::Engine.root, 'spec/factories')
