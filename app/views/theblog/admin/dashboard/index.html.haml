@@ -3,5 +3,5 @@
     %h1.page-header Admin Dashboard
 
 %ul.list-unstyled
-  - [:pages, :posts, :categories, :content_statuses].each do |item|
+  - admin_menu_items.each do |item|
     %li= link_to item.to_s.humanize, send("admin_#{item}_path")
