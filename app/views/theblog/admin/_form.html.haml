@@ -1,7 +1,10 @@
-= simple_form_for [:admin, item] do |f|
+= simple_form_for [:admin, item], html: { autocomplete: :off } do |f|
 
   - model_params.each do |field|
     = bootstrap_input(f, field)
+  - if f.object.is_a?(Theblog::Account)
+    = f.collection_check_boxes :role_ids, Theblog::Role.all, :id, :name
+    %br
 
   - model_associations.each do |association|
     = f.association association,

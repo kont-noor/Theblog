@@ -21,4 +21,5 @@ group :test do
   gem 'capybara'
   gem 'fantaskspec'
   gem 'generator_spec'
+  gem 'capybara-screenshot'
 end

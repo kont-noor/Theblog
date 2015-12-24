@@ -10,6 +10,7 @@ Theblog::Engine.routes.draw do
     end
 
     resources :content_statuses
+    resources :accounts, except: [:show]
     root 'dashboard#index'
   end
 

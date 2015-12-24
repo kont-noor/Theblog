@@ -1,5 +1,6 @@
 RSpec.shared_examples :admin_content_node do
   let(:node_button) { node_name.to_s.humanize }
+  let(:visit_nodes) { visit send("admin_#{node_name.to_s.pluralize}_path") }
 
   let!(:subject_node) { FactoryGirl.create node_name, author: account }
   let!(:blocked_node) { FactoryGirl.create "blocked_#{node_name}", author: account }
@@ -8,14 +9,12 @@ RSpec.shared_examples :admin_content_node do
     another_account = FactoryGirl.create :confirmed_account
     FactoryGirl.create node_name, author: another_account
 
-    login_with(account)
-
-    within('.sidebar') do
-      click_on node_button.pluralize
-    end
+    login_as(account)
   end
 
   it "creates node" do
+    visit_nodes
+
     click_on "New Item"
 
     expect(page).to have_content('New')
@@ -41,6 +40,8 @@ RSpec.shared_examples :admin_content_node do
   end
 
   it "updates node" do
+    visit_nodes
+
     expect(page).to have_content(subject_node.title)
 
     click_on_within_node(subject_node.title, "Edit")
@@ -54,7 +55,7 @@ RSpec.shared_examples :admin_content_node do
   end
 
   it "drafts and publishes node" do
-    expect(page).to have_content(subject_node.title)
+    visit_nodes
 
     within node_row(subject_node) do
       expect(page).to have_content("published")
@@ -89,9 +90,7 @@ RSpec.shared_examples :admin_content_node do
   it "moderator blocks and unblocks node" do
     add_role(account, :moderator)
 
-    within('.sidebar') do
-      click_on node_button.pluralize
-    end
+    visit_nodes
 
     expect(page).to have_content(subject_node.title)
 
@@ -129,6 +128,8 @@ RSpec.shared_examples :admin_content_node do
   end
 
   it "can neither draft or publish blocked nodes" do
+    visit_nodes
+
     expect(page).to have_content(blocked_node.title)
 
     within node_row(blocked_node) do
@@ -143,9 +144,7 @@ RSpec.shared_examples :admin_content_node do
   it "paginates items" do
     items = FactoryGirl.create_list(node_name, 100)
 
-    within('.sidebar') do
-      click_on node_button.pluralize
-    end
+    visit_nodes
 
     expect(all("tr").count).to eq(26)
     items[-25...-1].each do |item|
@@ -173,18 +172,5 @@ RSpec.shared_examples :admin_content_node do
   def node_row(node)
     title = node.is_a?(String) ? node : node.title
     "tr:contains('#{title}')"
-  end
-
-  def login_with(account)
-    visit theblog.admin_root_path
-
-    expect(page).to have_content('Log in')
-
-    fill_in('Email', with: account.email)
-    fill_in('Password', with: 'qwertyui')
-    click_on('Log in')
-
-    expect(page).to have_content('Signed in successfully')
-    expect(page).to have_content('Admin Dashboard')
   end
 end
