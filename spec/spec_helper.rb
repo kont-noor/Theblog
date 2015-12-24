@@ -6,6 +6,8 @@ require 'shoulda'
 require 'aasm/rspec'
 require 'fantaskspec'
 require 'generator_spec'
+require 'capybara-screenshot'
+require 'capybara-screenshot/rspec'
 
 FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
 FactoryGirl.definition_file_paths << File.join(Incarnator::Engine.root, 'spec/factories')
@@ -27,9 +29,21 @@ FactoryGirl.find_definitions
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  config.include Devise::TestHelpers, type: :controller
-
   config.infer_rake_task_specs_from_file_location!
+  config.include Devise::TestHelpers, type: :controller
+  config.include Warden::Test::Helpers
+  config.include Theblog::Engine.routes.url_helpers
+
+  config.before :suite do
+    Warden.test_mode!
+  end
+
+  config.before :all do
+    Theblog::Role::PREDEFINED.each do |role| # use db cleaner
+      FactoryGirl.create(:theblog_role, name: role) unless Theblog::Role.exists?(name: role)
+    end
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
