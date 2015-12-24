@@ -28,3 +28,11 @@ To add admin account run the following rake task:
 ```
 
 Follow `/blog/admin` to access the admin dashboard and `/blog` to get blog frontend.
+
+## Override views
+
+To override views run the following task:
+
+```
+  rails generate theblog:views
+```

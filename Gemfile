@@ -18,4 +18,5 @@ group :test do
   gem 'simplecov'
   gem 'capybara'
   gem 'fantaskspec'
+  gem 'generator_spec'
 end
