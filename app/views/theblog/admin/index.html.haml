@@ -1,16 +1,18 @@
 %table.table.table-striped
   %tr
-    - index_fields.each do |field|
-      %th= field
-    %th Actions
+    - if items.any?
+      - index_fields.each do |field|
+        %th= field
+      %th Actions
   - items.each do |item|
     %tr
       - index_fields.each do |key|
-        %td= item.send(key)
+        %td= format_value(item.send(key))
       %td
         = link_to_item(item)
         = link_to_edit_item(item) if policy(item).update?
-        = render "manage_content_statuses", item: item
+        = link_to_destroy_item(item) if policy(item).destroy?
+        = render "manage_content_statuses", item: item if is_content?(item)
 
 = paginate items
 
