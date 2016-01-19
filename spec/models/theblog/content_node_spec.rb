@@ -6,8 +6,6 @@ module Theblog
     it { is_expected.to belong_to(:author) }
     it { is_expected.to have_many(:child_nodes) }
 
-    it { is_expected.to validate_presence_of(:title) }
-    it { is_expected.to validate_presence_of(:slug) }
     it { is_expected.to validate_presence_of(:content_status) }
 
     describe "#content_status" do

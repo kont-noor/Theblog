@@ -1,11 +1,7 @@
 module Theblog
   module ApplicationHelper
     def link_to_content_node(node)
-      link = if node.parent_node.present?
-                theblog.content_node_path(node.parent_node.slug, node.slug)
-             else
-                theblog.root_content_node_path(node.slug)
-             end
+      link = path_to_content_node(node)
 
       if block_given?
         link_to(link) { yield }
