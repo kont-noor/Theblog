@@ -21,7 +21,9 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", ">= 4.0.1"
-  if rails_gem.version.version < '4.2'
+  # TODO: I don't like the solution of checking rails gem existance
+  # Because someone may deploy a new app with an old Rails version
+  if rails_gem && rails_gem.version.version < '4.2'
     s.add_dependency "foreigner"
   end
   s.add_dependency "haml", "~> 4.0"
