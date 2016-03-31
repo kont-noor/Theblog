@@ -11,6 +11,12 @@ To install the blog engine add the following line to `Gemfile`
   gem 'theblog'
 ```
 
+if you use Rails < 4.2 add foreigner as well:
+
+```ruby
+  fem 'foreigner'
+```
+
 Then run the following commang in the console:
 
 ```
