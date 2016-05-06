@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :account, class: Incarnator.account_model do
+  factory :account, class: 'Theblog::Account' do
     sequence(:user_name) { |n| "user#{n}" }
     sequence(:email) { |n| "user#{n}@fakemail.com" }
     password "qwertyui"
@@ -7,10 +7,10 @@ FactoryGirl.define do
     factory :confirmed_account do
       confirmed_at Time.now
 
-      Theblog::Role.pluck(:name).each do |role|
-        factory(role) do
+      Theblog::Role.all.each do |account_role|
+        factory(account_role.name) do
           after(:create) do |account|
-            Theblog::Role.find_by(name: role).accounts << account
+            account.roles << account_role
           end
         end
       end

@@ -9,7 +9,7 @@ namespace :theblog do
 
     password = account_attributes[:password] || "password"
 
-    account = Incarnator.account_model.constantize.
+    account = Theblog::Account.
       create! email: account_attributes[:email],
               user_name: account_attributes[:name],
               password: password,

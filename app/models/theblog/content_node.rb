@@ -3,7 +3,7 @@ module Theblog
     include AASM
 
     belongs_to :parent_node, class_name: 'Theblog::ContentNode'
-    belongs_to :author, class_name: Incarnator.account_model
+    belongs_to :author, class_name: 'Theblog::Account'
 
     has_many :child_nodes, class_name: 'Theblog::ContentNode', foreign_key: :parent_node_id
 
