@@ -2,6 +2,6 @@ Show
 %ul
   - index_fields.each do |key|
     %li
-      = key
+      = key.is_a?(Hash) ? key.keys.first : key
       \= 
-      = raw(item.send(key))
+      = formatted_value(item, key)
