@@ -11,6 +11,7 @@ Theblog::Engine.routes.draw do
 
     resources :content_statuses
     resources :accounts
+    resources :roles, only: [:show]
     root 'dashboard#index'
   end
 

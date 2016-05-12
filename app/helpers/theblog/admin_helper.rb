@@ -3,20 +3,29 @@ module Theblog
     def formatted_value(item, attribute)
       if attribute.is_a?(Hash)
         association_name = attribute.keys.first
-        association_attribute = attribute.values.first
         if model_associations.include?(association_name)
           association = item.send(association_name)
           if association.present?
-            title = association.send(association_attribute)
-            if attribute[:link]
-              link_to title, path_to_item(association)
+            if association.respond_to?(:any?)
+              raw(association.map { |el| print_association(el, attribute) }.join(', '))
             else
-              raw(title)
+              print_association(association, attribute)
             end
           end
         end
       else
         raw(item.send(attribute))
+      end
+    end
+
+    def print_association(association, attribute)
+      association_attribute = attribute.values.first
+      title = association.send(association_attribute)
+
+      if attribute[:link]
+        link_to title, path_to_item(association)
+      else
+        raw(title)
       end
     end
 
