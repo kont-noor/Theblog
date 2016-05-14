@@ -11,6 +11,7 @@ require 'foreigner' if Rails::VERSION::STRING < "4.2"
 module Theblog
   class Engine < ::Rails::Engine
     isolate_namespace Theblog
+    require 'theblog/concerns/controllers/itemable'
 
     config.generators do |g|
       g.test_framework :rspec

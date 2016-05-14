@@ -1,5 +1,17 @@
 module Theblog
   class ContentNodePolicy < ApplicationPolicy
+    def index?
+      true
+    end
+
+    def show?
+      true
+    end
+
+    def new?
+      user.has_role?(:editor, :moderator, :admin)
+    end
+
     def create?
       user.has_role?(:editor, :moderator, :admin)
     end

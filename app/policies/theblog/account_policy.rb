@@ -4,6 +4,10 @@ module Theblog
       user.has_role?(:admin)
     end
 
+    def show?
+      user.has_role?(:admin)
+    end
+
     def new?
       user.has_role?(:admin)
     end
