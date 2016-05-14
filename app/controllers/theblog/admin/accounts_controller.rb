@@ -1,11 +1,27 @@
 module Theblog
   class Admin::AccountsController < AdminController
     def index
-      authorize Theblog::Account, :index?
+      authorize model, :index?
     end
 
     def new
+      authorize model, :new?
       @item = model.new
+    end
+
+    def create
+      authorize model, :create?
+      @item = model.new(permitted_params)
+      generated_password = Devise.friendly_token.first(8)
+      @item.password = generated_password
+      if @item.save
+        # TODO: notify user
+        flash[:notice] = "Item created"
+        redirect_to action: :index
+      else
+        flash.now[:alert] = "Fix errors below"
+        render 'new'
+      end
     end
 
     private def items
@@ -32,5 +48,24 @@ module Theblog
       @item ||= Theblog::Account.find(params[:id])
     end
     helper_method :item
+
+    private def model_params
+      [:user_name, :email]
+    end
+    helper_method :model_params
+
+    def permitted_params
+      params.require(model_params_key).permit(*model_params.map{ |attr| attr.is_a?(Hash) ? attr.keys.first : attr }, *model_association_param_keys, role_ids: [])
+    end
+
+    private def model_association_param_keys
+      model_associations.map do |association|
+        model.reflections[association.to_s].foreign_key
+      end
+    end
+
+    private def model_params_key
+      model.to_s.underscore.match(/[\w_]+$/).to_s
+    end
   end
 end

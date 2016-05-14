@@ -9,7 +9,8 @@ module Theblog
 
     def create
       authorize model, :create?
-      if @item = model.create(permitted_params.merge({author_id: current_account.id}))
+      @item = model.new(permitted_params.merge({author_id: current_account.id}))
+      if @item.save
         flash[:notice] = "Item created"
         redirect_to action: :index
       else
