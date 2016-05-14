@@ -3,30 +3,23 @@ module Theblog
     extend ActiveSupport::Concern
 
     included do
-      helper_method :item
-      helper_method :items
-      helper_method :model
-      helper_method :model_params
-      helper_method :model_associations
-      helper_method :index_fields
+      before_action -> { authorize model, :"#{params[:action]}?"}, only: [:index, :new, :create]
+      before_action -> { authorize item, :"#{params[:action]}?"}, only: [:show, :edit, :update]
+
+      helper_method :item,
+                    :items,
+                    :model,
+                    :model_params,
+                    :model_associations,
+                    :index_fields
     end
 
     # actions
-    def index
-      authorize model, :index?
-    end
-
-    def show
-      authorize item, :show?
-    end
-
     def new
-      authorize model, :new?
       @item = model.new
     end
 
     def update
-      authorize item, :update?
       if item.update(permitted_params)
         flash[:notice] = "Item updated"
         redirect_to action: :show
@@ -77,6 +70,10 @@ module Theblog
 
     private def index_fields
       self.class::INDEX
+    end
+
+    private def permitted_params
+      params.require(model_params_key).permit(*model_params.map{ |attr| attr.is_a?(Hash) ? attr.keys.first : attr }, *model_association_param_keys)
     end
   end
 end

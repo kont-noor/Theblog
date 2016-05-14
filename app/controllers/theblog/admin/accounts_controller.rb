@@ -8,7 +8,6 @@ module Theblog
     ASSOCIATIONS = [:roles]
 
     def create
-      authorize model, :create?
       @item = model.new(permitted_params)
       generated_password = Devise.friendly_token.first(8)
       @item.password = generated_password
@@ -20,10 +19,6 @@ module Theblog
         flash.now[:alert] = "Fix errors below"
         render 'new'
       end
-    end
-
-    def permitted_params
-      params.require(model_params_key).permit(*model_params.map{ |attr| attr.is_a?(Hash) ? attr.keys.first : attr }, *model_association_param_keys)
     end
   end
 end

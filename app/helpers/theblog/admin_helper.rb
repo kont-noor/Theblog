@@ -1,20 +1,18 @@
 module Theblog
   module AdminHelper
     def formatted_value(item, attribute)
-      if attribute.is_a?(Hash)
-        association_name = attribute.keys.first
-        if model_associations.include?(association_name)
-          association = item.send(association_name)
-          if association.present?
-            if association.respond_to?(:any?)
-              raw(association.map { |el| print_association(el, attribute) }.join(', '))
-            else
-              print_association(association, attribute)
-            end
-          end
-        end
+      unless attribute.is_a?(Hash) 
+        return raw(item.send(attribute))
+      end
+
+      association_name = attribute.keys.first
+      association = item.try(association_name)
+      return if association.nil?
+
+      if association.respond_to?(:any?)
+        raw(association.map { |el| print_association(el, attribute) }.join(', '))
       else
-        raw(item.send(attribute))
+        print_association(association, attribute)
       end
     end
 
