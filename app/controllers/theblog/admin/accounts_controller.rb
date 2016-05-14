@@ -49,7 +49,7 @@ module Theblog
     helper_method :items
 
     private def index_fields
-      [:user_name, :email, {roles: :name, link: true}]
+      [:user_name, :email, :first_name, :middle_name, :last_name, {roles: :name, link: true}]
     end
     helper_method :index_fields
 
@@ -69,7 +69,7 @@ module Theblog
     helper_method :item
 
     private def model_params
-      [:user_name, :email]
+      [:first_name, :middle_name, :last_name, :user_name, :email]
     end
     helper_method :model_params
 
