@@ -9,6 +9,16 @@ module Theblog
       @item = model.new
     end
 
+    def update
+      authorize item, :update?
+      if item.update(permitted_params)
+        flash[:notice] = "Item updated"
+        redirect_to action: :show
+      else
+        render 'new'
+      end
+    end
+
     def create
       authorize model, :create?
       @item = model.new(permitted_params)
@@ -23,6 +33,15 @@ module Theblog
         render 'new'
       end
     end
+
+    private def item
+      @item ||= if params.has_key?("#{model_params_key}_id")
+                  model.find(params["#{model_params_key}_id"])
+                else
+                  model.find(params[:id])
+                end
+    end
+    helper_method :item
 
     private def items
       @items ||= Theblog::Account.page params[:page]
