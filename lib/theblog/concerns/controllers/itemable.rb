@@ -64,7 +64,10 @@ module Theblog
 
     private def model_association_param_keys
       model_associations.map do |association|
-        model.reflections[association.to_s].foreign_key
+        reflection = model.reflections[association.to_s]
+        key = reflection.foreign_key
+        key = {key.pluralize => []} unless reflection.is_a? ActiveRecord::Reflection::BelongsToReflection
+        key
       end
     end
 

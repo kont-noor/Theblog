@@ -23,7 +23,7 @@ module Theblog
     end
 
     def permitted_params
-      params.require(model_params_key).permit(*model_params.map{ |attr| attr.is_a?(Hash) ? attr.keys.first : attr }, *model_association_param_keys, role_ids: [])
+      params.require(model_params_key).permit(*model_params.map{ |attr| attr.is_a?(Hash) ? attr.keys.first : attr }, *model_association_param_keys)
     end
   end
 end
