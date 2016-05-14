@@ -5,7 +5,7 @@
         %i.fa.fa-dashboard.fa-fw
         Dashboard
 
-    - [:pages, :posts, :categories, :content_statuses].each do |item|
+    - [:pages, :posts, :categories, :content_statuses, :accounts].each do |item|
       %li
         = link_to send("admin_#{item}_path") do
           %i.fa.fa-files-o.fa-fw

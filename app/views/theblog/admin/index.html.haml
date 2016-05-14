@@ -1,16 +1,17 @@
 %table.table.table-striped
   %tr
     - index_fields.each do |field|
-      %th= field
+      %th= field.is_a?(Hash) ? field.keys.first : field
     %th Actions
   - items.each do |item|
     %tr
       - index_fields.each do |key|
-        %td= item.send(key)
+        %td
+          = formatted_value(item, key)
       %td
         = link_to_item(item)
         = link_to_edit_item(item) if policy(item).update?
-        = render "manage_content_statuses", item: item
+        = render "manage_item", item: item
 
 = paginate items
 

@@ -1,5 +1,32 @@
 module Theblog
   module AdminHelper
+    def formatted_value(item, attribute)
+      unless attribute.is_a?(Hash) 
+        return raw(item.send(attribute))
+      end
+
+      association_name = attribute.keys.first
+      association = item.try(association_name)
+      return if association.nil?
+
+      if association.respond_to?(:any?)
+        raw(association.map { |el| print_association(el, attribute) }.join(', '))
+      else
+        print_association(association, attribute)
+      end
+    end
+
+    def print_association(association, attribute)
+      association_attribute = attribute.values.first
+      title = association.send(association_attribute)
+
+      if attribute[:link]
+        link_to title, path_to_item(association)
+      else
+        raw(title)
+      end
+    end
+
     def link_to_item(item)
       link_to "View", path_to_item(item)
     end

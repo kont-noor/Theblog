@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "theblog:create_account", type: :rake do
   let(:task_name) { "theblog:create_account" }
-  let(:account_model) { Incarnator.account_model.constantize }
+  let(:account_model) { Theblog::Account }
 
 
   it "creates account" do

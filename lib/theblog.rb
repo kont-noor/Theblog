@@ -1,4 +1,3 @@
-require "devise"
 require "haml"
 require "simple_form"
 require "theblog/engine"

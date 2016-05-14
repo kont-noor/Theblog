@@ -1,7 +1,19 @@
 module Theblog
   class ContentNodePolicy < ApplicationPolicy
+    def index?
+      true
+    end
+
+    def show?
+      true
+    end
+
+    def new?
+      user.has_role?(:editor, :moderator, :admin)
+    end
+
     def create?
-      account_has_role?(user, [:editor, :moderator, :admin])
+      user.has_role?(:editor, :moderator, :admin)
     end
 
     def update?
@@ -17,16 +29,16 @@ module Theblog
     end
 
     def block?
-      account_has_role?(user, [:moderator, :admin])
+      user.has_role?(:moderator, :admin)
     end
 
     def unblock?
-      account_has_role?(user, [:moderator, :admin])
+      user.has_role?(:moderator, :admin)
     end
 
     def account_can_update_record?
-      (user == record.author && account_has_role?(user, [:editor])) ||
-        account_has_role?(user, [:moderator, :admin])
+      (user == record.author && user.has_role?(:editor)) ||
+        user.has_role?(:moderator, :admin)
     end
   end
 end
