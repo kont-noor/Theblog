@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :account, class: 'Theblog::Account' do
+  factory :theblog_account, class: 'Theblog::Account' do
     sequence(:user_name) { |n| "user#{n}" }
     sequence(:email) { |n| "user#{n}@fakemail.com" }
     password "qwertyui"
