@@ -35,7 +35,7 @@ describe 'admin accounts' do
   end
 
   it "updates account" do
-    FactoryGirl.create(:account)
+    FactoryGirl.create(:theblog_account)
 
     visit theblog.admin_accounts_path
 

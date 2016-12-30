@@ -5,7 +5,7 @@ module Theblog
     routes { Theblog::Engine.routes }
 
     let(:account) { FactoryGirl.create(:confirmed_account) }
-    let(:created_account) { FactoryGirl.create(:account) }
+    let(:created_account) { FactoryGirl.create(:theblog_account) }
     let(:params) do
       {
           user_name:   'John Doe',
