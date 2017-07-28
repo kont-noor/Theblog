@@ -1,5 +1,5 @@
 module Theblog
-  class Account < Incarnator.account_model.constantize
+  class Account < Theblog.account_model.constantize
     has_many :content_nodes
 
     has_many :accounts_roles

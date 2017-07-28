@@ -147,17 +147,17 @@ RSpec.shared_examples :admin_content_node do
       click_on node_button.pluralize
     end
 
-    expect(all("tr").count).to eq(26)
     items[-25...-1].each do |item|
       expect(page).to have_content(item.title)
     end
+    expect(all("tr").count).to eq(26)
 
     click_on("Next ›")
 
-    expect(all("tr").count).to eq(26)
     items[-50...-25].each do |item|
       expect(page).to have_content(item.title)
     end
+    expect(all("tr").count).to eq(26)
   end
 
   def add_role(account, role)

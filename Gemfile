@@ -9,7 +9,8 @@ gemspec
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
-gem 'devise', '3.5.1'
+gem 'rails', '>= 5.1.0'
+gem 'incarnator'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -23,4 +24,6 @@ group :test do
   gem 'capybara'
   gem 'fantaskspec'
   gem 'generator_spec'
+  gem 'rails-controller-testing'
+  gem 'selenium-webdriver'
 end

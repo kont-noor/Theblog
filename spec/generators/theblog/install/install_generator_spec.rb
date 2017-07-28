@@ -6,6 +6,7 @@ describe Theblog::InstallGenerator, type: :generator do
 
   let(:seeds_file) { File.expand_path("../tmp/db/seeds.rb", Rails.root) }
   let(:routes_file) { File.expand_path("../tmp/config/routes.rb", Rails.root) }
+  let(:initializer_file) { File.expand_path("../tmp/config/initializers/theblog.rb", Rails.root) }
 
   before do
     prepare_destination
@@ -22,8 +23,13 @@ describe Theblog::InstallGenerator, type: :generator do
 
   it "mounts blog to routes" do
     routes = File.read(routes_file)
-    expect(routes).to eq("Rails.application.routes.draw do\n  mount Incarnator::Engine => '/auth'" \
-                         "\n  mount Theblog::Engine => '/blog'\nend")
+    expect(routes).to eq("Rails.application.routes.draw do\n" \
+                         "  mount Theblog::Engine => '/blog'\nend")
+  end
+
+  it "copies initializer" do
+    routes = File.read(initializer_file)
+    expect(routes).to eq("Theblog.setup do |config|\n  config.account_model = \"Incarnator::Account\"\nend\n")
   end
 
   it "adds blog seeds to application seeds" do

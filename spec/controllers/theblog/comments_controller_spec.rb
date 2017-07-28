@@ -16,7 +16,7 @@ module Theblog
         expect(Theblog::Post).to receive(:find_by!).with(id: theblog_post.id.to_s).and_return(theblog_post)
 
         expect{
-          post :create, comment: {body: 'Some comment', parent_node_id: theblog_post.id}
+          post :create, params: { comment: { body: 'Some comment', parent_node_id: theblog_post.id } }
         }.to change(Theblog::Comment, :count).by(1)
 
         expect(response).to redirect_to root_content_node_path(theblog_post.slug)
@@ -30,7 +30,7 @@ module Theblog
         expect(Theblog::Comment).to receive(:find).with(comment.id.to_s).and_return(comment)
 
         expect{
-          delete :destroy, id: comment.id
+          delete :destroy, params: { id: comment.id }
         }.to change(Theblog::Comment, :count).by(-1)
 
         expect(response).to redirect_to root_content_node_path(comment.post.slug)
@@ -39,7 +39,7 @@ module Theblog
       it "checks permissions" do
         expect(Theblog::Comment).to receive(:find).with(comment.id.to_s).and_return(comment)
         expect(controller).to receive(:authorize).with(comment, :delete?)
-        delete :destroy, id: comment.id
+        delete :destroy, params: { id: comment.id }
       end
     end
   end

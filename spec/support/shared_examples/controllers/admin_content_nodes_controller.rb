@@ -1,13 +1,13 @@
 RSpec.shared_examples :admin_content_nodes_controller_update do
   it "raises exception if user tries to update another content_node" do
-    expect{ patch :update, id: content_node.id }.
+    expect{ patch :update, params: { id: content_node.id } }.
       to raise_error(Pundit::NotAuthorizedError)
   end
 
   it "raises exception if user tries to update own post but is no longer editor" do
     content_node.update(author: account)
 
-    expect{ patch :update, id: content_node.id }.
+    expect{ patch :update, params: { id: content_node.id } }.
       to raise_error(Pundit::NotAuthorizedError)
   end
 
@@ -15,7 +15,7 @@ RSpec.shared_examples :admin_content_nodes_controller_update do
     content_node.update(author: account)
     Theblog::AccountsRole.create!(account: account, role: Theblog::Role.find_by(name: :editor))
 
-    patch :update, id: content_node.id, content_node_key => { body: "test controller body" }
+    patch :update, params: { id: content_node.id, content_node_key => { body: "test controller body" } }
 
     expect(response).to redirect_to(action: :show)
     expect(content_node.reload.body).to eq("test controller body")
@@ -31,7 +31,7 @@ RSpec.shared_examples :admin_content_nodes_controller_create do
   it "creates post if user has an editor role" do
     Theblog::Role.find_by(name: :editor).accounts << account
 
-    post :create, content_node_key => { body: "test controller body", title: "title", slug: "slug" }
+    post :create, params: { content_node_key => { body: "test controller body", title: "title", slug: "slug" } }
 
     expect(response).to redirect_to(action: :index)
 

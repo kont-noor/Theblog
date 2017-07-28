@@ -22,13 +22,12 @@ module Theblog
     describe "POST create" do
 
       it "raises exception if user is not an admin" do
-        expect{ post :create }.
-            to raise_error(Pundit::NotAuthorizedError)
+        expect{ post :create }.to raise_error(Pundit::NotAuthorizedError)
       end
 
       it "creates post if user has an admin role" do
         account.roles << Theblog::Role.find_by(name: :admin)
-        post :create, account: params
+        post :create, params: { account: params }
 
         expect(response).to redirect_to(action: :index)
 
@@ -46,13 +45,13 @@ module Theblog
       before { created_account }
 
       it "raises exception if user is not an admin" do
-        expect{ patch :update, id: created_account.id }.
+        expect{ patch :update, params: { id: created_account.id } }.
             to raise_error(Pundit::NotAuthorizedError)
       end
 
       it "creates account if user has the admin role" do
         account.roles << Theblog::Role.find_by(name: :admin)
-        patch :update, id: created_account.id, account: params
+        patch :update, params: { id: created_account.id, account: params }
 
         expect(response).to redirect_to(action: :show)
 
