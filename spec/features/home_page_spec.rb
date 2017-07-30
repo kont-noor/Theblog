@@ -31,17 +31,17 @@ describe 'pages' do
     it "displays posts with pagination" do
       visit(theblog.root_path)
 
-      expect(all(".post-preview").count).to eq(25)
       posts[-25...-1].each do |post|
         expect(page).to have_content(post.title)
       end
+      expect(all(".post-preview").count).to eq(25)
 
       click_on("Next ›")
 
-      expect(all(".post-preview").count).to eq(25)
       posts[-50...-25].each do |post|
         expect(page).to have_content(post.title)
       end
+      expect(all(".post-preview").count).to eq(25)
     end
   end
 end

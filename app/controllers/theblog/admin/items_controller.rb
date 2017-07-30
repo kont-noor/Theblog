@@ -27,9 +27,9 @@ module Theblog
       authorize item, :"#{state}?"
 
       item.send("#{state}!")
-      redirect_to :back, notice: "Item is #{state}ed"
+      redirect_back notice: "Item is #{state}ed", fallback_location: theblog.admin_root_path
     rescue AASM::InvalidTransition => err
-      redirect_to :back, alert: "Item is not #{state}ed"
+      redirect_back alert: "Item is not #{state}ed", fallback_location: theblog.admin_root_path
     end
   end
 end

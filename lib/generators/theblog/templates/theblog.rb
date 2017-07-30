@@ -1,3 +1,3 @@
-Incarnator.setup do |config|
+Theblog.setup do |config|
   config.account_model = "Incarnator::Account"
 end

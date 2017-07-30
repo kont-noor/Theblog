@@ -28,7 +28,7 @@ FactoryGirl.find_definitions
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Warden::Test::Helpers
 
   config.infer_rake_task_specs_from_file_location!

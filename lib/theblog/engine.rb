@@ -1,4 +1,3 @@
-require 'incarnator'
 require 'pundit'
 require 'aasm'
 require 'kaminari'
