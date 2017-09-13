@@ -9,7 +9,11 @@ module Theblog
     helper_method :menu
 
     # TODO: get current account helper name from Incarnator
-    alias_method :current_user, :current_account
+    # The commented line below didn't work for overrode controllers
+    # alias_method :current_user, :current_account
+    def current_user
+      current_account
+    end
 
     def path_to_content_node(node)
       if node.parent_node.present?
