@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    theblog (0.0.2.2)
+    theblog (0.0.2.3)
       aasm
       bootstrap-sass
       bootstrap-wysihtml5-rails
