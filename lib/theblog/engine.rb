@@ -30,6 +30,10 @@ module Theblog
       Rails.application.config.assets.precompile += %w(
         theblog/*
       )
+
+      Dir.glob(Rails.root + "app/**/*_decorator*.rb").each do |c|
+        require_dependency(c)
+      end
     end
   end
 end
