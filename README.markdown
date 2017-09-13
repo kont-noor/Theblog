@@ -46,3 +46,7 @@ To override views run the following task:
 ```
   rails generate theblog:views
 ```
+
+## Override controllers
+
+Now you can override controllers. Just follow steps provided [here](http://edgeguides.rubyonrails.org/engines.html#implementing-decorator-pattern-using-class-class-eval)
