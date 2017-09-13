@@ -24,3 +24,5 @@ group :test do
   gem 'fantaskspec'
   gem 'generator_spec'
 end
+
+ruby '2.3.2'
